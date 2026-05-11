@@ -151,26 +151,88 @@
               <span class="lab">CAPABILITY HORIZON</span>
               <span class="meta">METR · LLM time horizon, 80% success</span>
             </div>
-            <svg viewBox="0 0 360 200" preserveAspectRatio="none" aria-label="LLM capability curve">
-              <line x1="0" y1="180" x2="360" y2="180" stroke="rgba(255,255,255,0.12)"/>
-              <line x1="0" y1="120" x2="360" y2="120" stroke="rgba(255,255,255,0.06)" stroke-dasharray="2,4"/>
-              <line x1="0" y1="60" x2="360" y2="60" stroke="rgba(255,255,255,0.06)" stroke-dasharray="2,4"/>
-              <path d="M 10 178 Q 100 178, 170 174 T 240 155 Q 285 115, 315 60 T 350 18 L 350 180 L 10 180 Z" fill="rgba(233,120,37,0.16)"/>
-              <path d="M 10 178 Q 100 178, 170 174 T 240 155 Q 285 115, 315 60 T 350 18" stroke="#E97825" stroke-width="2" fill="none" stroke-linecap="round"/>
-              <circle cx="40" cy="179" r="2.5" fill="rgba(255,255,255,0.55)"/>
-              <circle cx="100" cy="178" r="2.5" fill="rgba(255,255,255,0.55)"/>
-              <circle cx="170" cy="174" r="2.5" fill="rgba(255,255,255,0.55)"/>
-              <circle cx="220" cy="162" r="2.5" fill="rgba(255,255,255,0.55)"/>
-              <circle cx="270" cy="135" r="2.5" fill="rgba(255,255,255,0.55)"/>
-              <circle cx="310" cy="75" r="3" fill="#E97825"/>
-              <circle cx="345" cy="22" r="4.5" fill="#E97825" stroke="#fff" stroke-width="1.5"/>
-              <text x="40" y="196" fill="rgba(255,255,255,0.4)" font-size="8" font-family="JetBrains Mono, monospace" text-anchor="middle">2019</text>
-              <text x="170" y="196" fill="rgba(255,255,255,0.4)" font-size="8" font-family="JetBrains Mono, monospace" text-anchor="middle">2023</text>
-              <text x="310" y="196" fill="rgba(255,255,255,0.4)" font-size="8" font-family="JetBrains Mono, monospace" text-anchor="middle">2026</text>
-              <text x="2" y="22" fill="rgba(255,255,255,0.4)" font-size="8" font-family="JetBrains Mono, monospace">2h+</text>
-              <text x="2" y="184" fill="rgba(255,255,255,0.4)" font-size="8" font-family="JetBrains Mono, monospace">0</text>
+            <svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-label="METR LLM Time Horizon chart">
+              <text x="430" y="22" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-size="13" font-family="Inter Tight, sans-serif" font-weight="500">LLM Time Horizon, METR Software Tasks</text>
+              <text x="430" y="40" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="11" font-family="Inter Tight, sans-serif">80% success — with GPT-5.5 Pro Extended estimate</text>
+              <rect x="100" y="65" width="660" height="375" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+              <g stroke="rgba(255,255,255,0.07)" stroke-dasharray="2,3" stroke-width="1">
+                <line x1="100" y1="92" x2="760" y2="92"/>
+                <line x1="100" y1="142" x2="760" y2="142"/>
+                <line x1="100" y1="192" x2="760" y2="192"/>
+                <line x1="100" y1="242" x2="760" y2="242"/>
+                <line x1="100" y1="292" x2="760" y2="292"/>
+                <line x1="100" y1="342" x2="760" y2="342"/>
+              </g>
+              <g fill="rgba(255,255,255,0.55)" font-size="10" font-family="Inter Tight, sans-serif" text-anchor="end">
+                <text x="92" y="96">3 hours</text>
+                <text x="92" y="146">2.5 h</text>
+                <text x="92" y="196">2 hours</text>
+                <text x="92" y="246">1.5 h</text>
+                <text x="92" y="296">1 hour</text>
+                <text x="92" y="346">30 min</text>
+                <text x="92" y="443">0</text>
+              </g>
+              <text transform="translate(35,250) rotate(-90)" fill="rgba(255,255,255,0.5)" font-size="10" font-family="Inter Tight, sans-serif" text-anchor="middle">Human task duration at 80% model success</text>
+              <g fill="rgba(255,255,255,0.55)" font-size="11" font-family="Inter Tight, sans-serif" text-anchor="middle">
+                <text x="175" y="462">2020</text>
+                <text x="335" y="462">2022</text>
+                <text x="495" y="462">2024</text>
+                <text x="615" y="462">2025</text>
+                <text x="715" y="462">2026</text>
+              </g>
+              <text x="430" y="486" fill="rgba(255,255,255,0.5)" font-size="11" font-family="Inter Tight, sans-serif" text-anchor="middle">Release year</text>
+              <path d="M 480 438 C 530 438, 565 432, 590 415 C 615 395, 635 360, 660 305 C 685 245, 705 195, 720 150 C 730 130, 740 110, 745 95" stroke="#5B9BD5" stroke-width="1.5" fill="none" stroke-dasharray="6,4" opacity="0.75"/>
+              <g fill="#5B9BD5">
+                <circle cx="115" cy="440" r="3"/>
+                <circle cx="175" cy="440" r="3"/>
+                <circle cx="335" cy="440" r="3"/>
+                <circle cx="445" cy="438" r="3"/>
+                <circle cx="470" cy="437" r="3"/>
+                <circle cx="485" cy="436" r="3"/>
+                <circle cx="498" cy="434" r="3"/>
+                <circle cx="512" cy="432" r="3"/>
+                <circle cx="528" cy="429" r="3"/>
+                <circle cx="542" cy="425" r="3"/>
+                <circle cx="558" cy="420" r="3"/>
+                <circle cx="572" cy="414" r="3"/>
+                <circle cx="586" cy="408" r="3"/>
+                <circle cx="598" cy="400" r="3"/>
+                <circle cx="608" cy="390" r="3"/>
+                <circle cx="618" cy="380" r="3"/>
+                <circle cx="628" cy="368" r="3"/>
+                <circle cx="640" cy="352" r="3"/>
+                <circle cx="652" cy="332" r="3"/>
+                <circle cx="664" cy="316" r="3"/>
+                <circle cx="675" cy="305" r="3"/>
+                <circle cx="685" cy="290" r="3"/>
+                <circle cx="695" cy="260" r="3"/>
+                <circle cx="705" cy="220" r="3"/>
+                <circle cx="755" cy="80" r="3"/>
+              </g>
+              <line x1="720" y1="122" x2="720" y2="204" stroke="#E97825" stroke-width="1.5"/>
+              <line x1="713" y1="122" x2="727" y2="122" stroke="#E97825" stroke-width="1.5"/>
+              <line x1="713" y1="204" x2="727" y2="204" stroke="#E97825" stroke-width="1.5"/>
+              <text x="720" y="172" fill="#E97825" font-size="22" font-weight="bold" text-anchor="middle">★</text>
+              <g fill="rgba(255,255,255,0.78)" font-size="9.5" font-family="Inter Tight, sans-serif" text-anchor="end">
+                <text x="755" y="78">Claude Mythos Preview</text>
+                <text x="693" y="223">Gemini 3.1 Pro</text>
+                <text x="685" y="263">Claude Opus 4.6</text>
+                <text x="678" y="295">GPT-5.2 high</text>
+                <text x="670" y="310">GPT-5.4 xhigh</text>
+                <text x="660" y="325">GPT-5</text>
+              </g>
+              <text x="603" y="155" fill="rgba(255,255,255,0.78)" font-size="9.5" font-family="Inter Tight, sans-serif" text-anchor="end">GPT-5.5 Pro Extended</text>
+              <text x="603" y="168" fill="rgba(255,255,255,0.78)" font-size="9.5" font-family="Inter Tight, sans-serif" text-anchor="end">~2h20m estimate</text>
+              <line x1="606" y1="163" x2="713" y2="172" stroke="rgba(255,255,255,0.45)" stroke-width="0.8"/>
+              <rect x="115" y="80" width="190" height="68" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+              <circle cx="132" cy="100" r="3" fill="#5B9BD5"/>
+              <text x="146" y="104" fill="rgba(255,255,255,0.85)" font-size="10" font-family="Inter Tight, sans-serif">METR 80% time horizon</text>
+              <line x1="124" y1="120" x2="140" y2="120" stroke="#5B9BD5" stroke-width="1.5" stroke-dasharray="3,2"/>
+              <text x="146" y="124" fill="rgba(255,255,255,0.85)" font-size="10" font-family="Inter Tight, sans-serif">Exponential guide fit</text>
+              <text x="132" y="142" fill="#E97825" font-size="13" font-weight="bold" text-anchor="middle">★</text>
+              <text x="146" y="142" fill="rgba(255,255,255,0.85)" font-size="10" font-family="Inter Tight, sans-serif">GPT-5.5 Pro Extended estimate</text>
             </svg>
-            <p class="curve-caption">From near-zero to <span class="accent">2+ hours of autonomous work</span> in three years. The curve isn't slowing.</p>
+            <p class="curve-caption">From near-zero in 2022 to <span class="accent">2+ hours of autonomous work</span> by mid-2026. The curve isn't slowing — the next steps are already plotted.</p>
           </div>
         </div>
         <div class="cadence-bottom-right">
@@ -180,9 +242,9 @@
               <span class="lab">JUST IN — MAY 2026</span>
             </div>
             <ul>
-              <li><b>Claude Mythos Preview</b><span>Anthropic · today</span></li>
               <li><b>GPT-5.5 Pro Extended</b><span>OpenAI · this week</span></li>
               <li><b>Gemini 3.1 Pro</b><span>Google · last week</span></li>
+              <li><b>Claude Opus 4.6</b><span>Anthropic · this month</span></li>
             </ul>
             <p class="hint">Our agents already test what's worth keeping. <span class="accent">Most firms haven't noticed yet.</span></p>
           </div>

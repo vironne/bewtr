@@ -849,7 +849,7 @@ section { padding: 140px 0; position: relative; }
   letter-spacing: 0.16em; text-transform: uppercase;
   color: rgba(255,255,255,0.4); text-align: right;
 }
-.cadence-curve svg { width: 100%; height: auto; display: block; max-height: 240px; }
+.cadence-curve svg { width: 100%; height: auto; display: block; max-height: 460px; }
 .cadence-curve .curve-caption { font-size: 14px; color: rgba(255,255,255,0.72); line-height: 1.55; margin-top: 16px; max-width: 520px; }
 .cadence-curve .curve-caption .accent { color: var(--orange); font-weight: 700; }
 
