@@ -126,7 +126,7 @@
       <div class="glyph-r">“</div>
     </div>
 
-    <div class="cadence-block">
+    <div class="cadence-block dark-block">
       <div class="cadence-head reveal">
         <h3>AI MOVES <span class="accent">TOO FAST.</span> NO ONE INTERNAL CAN KEEP UP.</h3>
         <div class="meta">Models, tools and frameworks shipped since January 2025 — non-exhaustive.</div>
@@ -144,17 +144,53 @@
         </div>
       </div>
 
-      <div class="cadence-foot reveal">
-        <div class="col-a">
-          <span class="lab">PLUS ROUGHLY</span>
-          <div class="big">~80<sup>/WK</sup></div>
-          <p>New releases each week across generative AI.</p>
+      <div class="cadence-bottom reveal">
+        <div class="cadence-bottom-left">
+          <div class="cadence-curve">
+            <div class="curve-head">
+              <span class="lab">CAPABILITY HORIZON</span>
+              <span class="meta">METR · LLM time horizon, 80% success</span>
+            </div>
+            <svg viewBox="0 0 360 200" preserveAspectRatio="none" aria-label="LLM capability curve">
+              <line x1="0" y1="180" x2="360" y2="180" stroke="rgba(255,255,255,0.12)"/>
+              <line x1="0" y1="120" x2="360" y2="120" stroke="rgba(255,255,255,0.06)" stroke-dasharray="2,4"/>
+              <line x1="0" y1="60" x2="360" y2="60" stroke="rgba(255,255,255,0.06)" stroke-dasharray="2,4"/>
+              <path d="M 10 178 Q 100 178, 170 174 T 240 155 Q 285 115, 315 60 T 350 18 L 350 180 L 10 180 Z" fill="rgba(233,120,37,0.16)"/>
+              <path d="M 10 178 Q 100 178, 170 174 T 240 155 Q 285 115, 315 60 T 350 18" stroke="#E97825" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <circle cx="40" cy="179" r="2.5" fill="rgba(255,255,255,0.55)"/>
+              <circle cx="100" cy="178" r="2.5" fill="rgba(255,255,255,0.55)"/>
+              <circle cx="170" cy="174" r="2.5" fill="rgba(255,255,255,0.55)"/>
+              <circle cx="220" cy="162" r="2.5" fill="rgba(255,255,255,0.55)"/>
+              <circle cx="270" cy="135" r="2.5" fill="rgba(255,255,255,0.55)"/>
+              <circle cx="310" cy="75" r="3" fill="#E97825"/>
+              <circle cx="345" cy="22" r="4.5" fill="#E97825" stroke="#fff" stroke-width="1.5"/>
+              <text x="40" y="196" fill="rgba(255,255,255,0.4)" font-size="8" font-family="JetBrains Mono, monospace" text-anchor="middle">2019</text>
+              <text x="170" y="196" fill="rgba(255,255,255,0.4)" font-size="8" font-family="JetBrains Mono, monospace" text-anchor="middle">2023</text>
+              <text x="310" y="196" fill="rgba(255,255,255,0.4)" font-size="8" font-family="JetBrains Mono, monospace" text-anchor="middle">2026</text>
+              <text x="2" y="22" fill="rgba(255,255,255,0.4)" font-size="8" font-family="JetBrains Mono, monospace">2h+</text>
+              <text x="2" y="184" fill="rgba(255,255,255,0.4)" font-size="8" font-family="JetBrains Mono, monospace">0</text>
+            </svg>
+            <p class="curve-caption">From near-zero to <span class="accent">2+ hours of autonomous work</span> in three years. The curve isn't slowing.</p>
+          </div>
         </div>
-        <div class="col-b">
-          <span class="lab">WHAT IT MEANS</span>
-          <p>
-            No internal team can track this pace without <span class="accent">drowning in monitoring</span>. Selecting what serves the business — and what to ignore — has become a job in itself.
-          </p>
+        <div class="cadence-bottom-right">
+          <div class="just-in">
+            <div class="just-in-head">
+              <span class="pulse"></span>
+              <span class="lab">JUST IN — MAY 2026</span>
+            </div>
+            <ul>
+              <li><b>Claude Mythos Preview</b><span>Anthropic · today</span></li>
+              <li><b>GPT-5.5 Pro Extended</b><span>OpenAI · this week</span></li>
+              <li><b>Gemini 3.1 Pro</b><span>Google · last week</span></li>
+            </ul>
+            <p class="hint">Our agents already test what's worth keeping. <span class="accent">Most firms haven't noticed yet.</span></p>
+          </div>
+          <div class="impact-summary">
+            <span class="lab">PLUS ROUGHLY</span>
+            <div class="big">~80<sup>/WK</sup></div>
+            <p>New releases every week. Selecting what serves the business — and what to ignore — is a full-time job.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -219,9 +255,9 @@
       NEITHER FIRM NOR AGENCY. ONE TEAM THAT THINKS <span class="accent">AND</span> OPERATES — A PREMIUM STANDARD, PRODUCTIZED AND HELD OVER TIME.
     </p>
 
-    <div class="agent">
+    <div class="agent dark-block">
       <div class="agent-head reveal">
-        <span class="lab">CLARIFICATION</span>
+        <span class="lab">OUR ANSWER</span>
         <h3>
           <span class="strike">NOT A CHATBOT.</span>
           A <span class="accent">SUPER-EMPLOYEE.</span>
@@ -229,10 +265,13 @@
       </div>
       <div class="agent-body reveal">
         <p>
-          A chatbot answers questions. An agent <span class="accent">does the work</span> — owns a workflow end-to-end, inside your tools, without constant supervision.
+          The agent isn't a tool your team learns to use. It's a coworker that <span class="accent">does its share</span> — owns a workflow end-to-end, inside your existing tools, without supervision.
         </p>
         <p>
-          In practice: it writes and sends, fills the CRM, generates and publishes, monitors and alerts, onboards and certifies. It doesn't replace your team — it removes the time that should never have been theirs.
+          It works <span class="accent">for</span> your employees, never instead of them. It writes and sends, fills the CRM, generates and publishes, monitors and alerts. It removes the time that should never have been theirs.
+        </p>
+        <p class="manifesto">
+          The product isn't software, isn't a platform, isn't a license. <span class="accent">The product is the agent itself</span> — built, deployed and operated for your team.
         </p>
         <div class="agent-traits">
           <div class="trait">
