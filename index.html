@@ -6,24 +6,24 @@
 <title>Orchestra × BE WTR — Le prochain chapitre</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@200;300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200..700;1,200..700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #F2EEE5;
-    --paper-2: #EAE4D6;
-    --paper-3: #DDD5C2;
-    --ink: #0D1416;
-    --ink-2: #1A2326;
-    --ink-soft: #2E3A3D;
-    --muted: #6E6A60;
-    --muted-2: #94908A;
-    --water: #1F4A55;
-    --water-soft: #4D7780;
-    --water-pale: #B7C8CC;
-    --aqua: #6FA0A8;
-    --line: rgba(13,20,22,0.10);
-    --line-2: rgba(13,20,22,0.18);
-    --line-strong: rgba(13,20,22,0.35);
+    --paper: #F4EDE0;
+    --paper-2: #EBE2D2;
+    --paper-3: #DED2BD;
+    --ink: #1A1A1A;
+    --ink-2: #2A2A2A;
+    --ink-soft: #4A4A4A;
+    --muted: #7A7A7A;
+    --muted-2: #A0A0A0;
+    --water: #C9573D;
+    --water-soft: #D87A65;
+    --water-pale: #F0D5C9;
+    --aqua: #B84B33;
+    --line: rgba(26,26,26,0.08);
+    --line-2: rgba(26,26,26,0.14);
+    --line-strong: rgba(26,26,26,0.28);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,7 +31,7 @@
   body {
     background: var(--paper);
     color: var(--ink);
-    font-family: 'Hanken Grotesk', -apple-system, system-ui, sans-serif;
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
     font-weight: 350;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -45,8 +45,8 @@
     position: fixed; inset: 0;
     pointer-events: none; z-index: 0;
     background:
-      radial-gradient(ellipse 90% 60% at 50% 0%, rgba(31,74,85,0.04), transparent 60%),
-      radial-gradient(ellipse 70% 50% at 100% 100%, rgba(183,200,204,0.18), transparent 60%);
+      radial-gradient(ellipse 90% 60% at 50% 0%, rgba(201,87,61,0.04), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 100% 100%, rgba(240,213,201,0.22), transparent 60%);
   }
   body::after {
     content: "";
@@ -65,7 +65,7 @@
   }
 
   /* === TYPOGRAPHY === */
-  .serif { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; }
+  .serif { font-family: 'Inter', sans-serif; font-style: italic; font-weight: 300; letter-spacing: -0.005em; }
   .mono  { font-family: 'JetBrains Mono', monospace; font-weight: 400; }
   .eyebrow {
     font-family: 'JetBrains Mono', monospace;
@@ -90,7 +90,7 @@
     -webkit-backdrop-filter: blur(10px) saturate(120%);
   }
   .nav .brand {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 13px;
     letter-spacing: 0.36em;
@@ -154,7 +154,7 @@
     padding: 80px 0 40px;
   }
   .hero-title {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 200;
     font-size: clamp(3.6rem, 9.6vw, 9.5rem);
     line-height: 0.92;
@@ -162,7 +162,7 @@
     color: var(--ink);
   }
   .hero-title em {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Inter', sans-serif;
     font-style: italic;
     font-weight: 400;
     color: var(--water);
@@ -177,7 +177,7 @@
     box-shadow:
       inset 0 0 0 1px rgba(13,20,22,0.12),
       inset 0 -10px 30px rgba(13,20,22,0.18),
-      0 12px 40px rgba(31,74,85,0.25);
+      0 12px 40px rgba(201,87,61,0.25);
     position: relative; flex-shrink: 0;
     animation: bob 6s ease-in-out infinite;
   }
@@ -194,7 +194,7 @@
   }
   .hero-aside .lab { display: block; margin-bottom: 18px; }
   .hero-aside p {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1.5rem;
     line-height: 1.3;
     color: var(--ink);
@@ -231,7 +231,7 @@
     margin-bottom: 96px;
   }
   .section-head .num {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 200;
     font-size: clamp(4rem, 10vw, 9rem);
     line-height: 0.85;
@@ -239,23 +239,23 @@
     color: var(--ink);
   }
   .section-head .num em {
-    font-family: 'Instrument Serif', serif; font-style: italic;
+    font-family: 'Inter', sans-serif; font-style: italic;
     color: var(--water);
   }
   .section-head .title {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 300;
     font-size: clamp(2rem, 3.6vw, 3.2rem);
     line-height: 1.0;
     letter-spacing: -0.028em;
   }
-  .section-head .title em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); }
+  .section-head .title em { font-family: 'Inter', sans-serif; font-style: italic; color: var(--water); }
   .section-head .label { display: block; margin-bottom: 18px; }
   .section-head .meta { text-align: right; color: var(--muted); font-size: 13px; line-height: 1.5; max-width: 220px; }
 
   /* === SECTION 01 — LE MOMENT === */
   .moment-intro {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: clamp(1.8rem, 3.4vw, 2.8rem);
     line-height: 1.18;
@@ -265,7 +265,7 @@
     letter-spacing: -0.015em;
   }
   .moment-intro em { font-style: italic; color: var(--water); }
-  .moment-intro .ampersand { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); font-size: 1.15em; }
+  .moment-intro .ampersand { font-family: 'Inter', sans-serif; font-style: italic; color: var(--water); font-size: 1.15em; }
 
   /* Stats — pulled apart, editorial */
   .stats-grid {
@@ -285,7 +285,7 @@
   .stat:hover { background: var(--paper-2); }
   .stat .lab { display:block; margin-bottom: 28px; }
   .stat .num {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 200;
     font-size: clamp(3rem, 5.6vw, 5rem);
     line-height: 0.9;
@@ -294,7 +294,7 @@
     color: var(--ink);
   }
   .stat .num sup {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Inter', sans-serif;
     font-style: italic;
     font-size: 0.32em;
     color: var(--water);
@@ -312,13 +312,13 @@
   /* Wave divider */
   .wave-sep {
     height: 80px;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1440' height='80' viewBox='0 0 1440 80' preserveAspectRatio='none'><path d='M0 40 C 180 10, 360 70, 540 40 S 900 10, 1080 40 S 1440 70, 1440 40' stroke='%231F4A55' stroke-width='1' fill='none' opacity='0.4'/></svg>");
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1440' height='80' viewBox='0 0 1440 80' preserveAspectRatio='none'><path d='M0 40 C 180 10, 360 70, 540 40 S 900 10, 1080 40 S 1440 70, 1440 40' stroke='%23C9573D' stroke-width='1' fill='none' opacity='0.4'/></svg>");
     background-size: 100% 100%;
     margin: 60px 0 80px;
   }
 
   .moment-pull {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Inter', sans-serif;
     font-style: italic;
     font-size: clamp(1.6rem, 3vw, 2.4rem);
     line-height: 1.25;
@@ -331,7 +331,7 @@
   }
   .moment-pull::before {
     content: "”";
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Inter', sans-serif;
     font-size: 6rem;
     color: var(--water);
     position: absolute;
@@ -349,14 +349,14 @@
     flex-wrap: wrap;
   }
   .cadence-head h3 {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 300;
     font-size: clamp(2rem, 4vw, 3.4rem);
     line-height: 1.05;
     letter-spacing: -0.025em;
     max-width: 800px;
   }
-  .cadence-head h3 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); }
+  .cadence-head h3 em { font-family: 'Inter', sans-serif; font-style: italic; color: var(--water); }
   .cadence-head .meta { color: var(--muted); font-size: 13px; line-height: 1.55; max-width: 260px; text-align: right; }
 
   .marquee {
@@ -377,7 +377,7 @@
   }
   .marquee-track.reverse { animation-duration: 130s; animation-direction: reverse; }
   .marquee-item {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 300;
     font-size: 1.5rem;
     padding: 6px 28px;
@@ -387,7 +387,7 @@
     letter-spacing: -0.01em;
   }
   .marquee-item.accent {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Inter', sans-serif;
     font-style: italic;
     color: var(--water);
     font-weight: 400;
@@ -406,7 +406,7 @@
   }
   .cadence-foot .col-a .lab { display: block; margin-bottom: 18px; color: var(--water); }
   .cadence-foot .col-a .big {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 200;
     font-size: clamp(3.4rem, 6vw, 5.5rem);
     line-height: 1;
@@ -414,11 +414,11 @@
     color: var(--ink);
     margin-bottom: 14px;
   }
-  .cadence-foot .col-a .big em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); font-size: 0.5em; vertical-align: super; }
+  .cadence-foot .col-a .big em { font-family: 'Inter', sans-serif; font-style: italic; color: var(--water); font-size: 0.5em; vertical-align: super; }
   .cadence-foot .col-a p { color: var(--muted); font-size: 14px; line-height: 1.55; max-width: 280px; }
   .cadence-foot .col-b .lab { display: block; margin-bottom: 18px; color: var(--water); }
   .cadence-foot .col-b p { font-size: 1.05rem; line-height: 1.65; color: var(--ink-soft); max-width: 640px; }
-  .cadence-foot .col-b p em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); }
+  .cadence-foot .col-b p em { font-family: 'Inter', sans-serif; font-style: italic; color: var(--water); }
 
   /* Risk panel */
   .risk {
@@ -431,7 +431,7 @@
   }
   .risk::before {
     content: ""; position: absolute; inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 0% 40%, rgba(31,74,85,0.45), transparent 60%);
+    background: radial-gradient(ellipse 60% 80% at 0% 40%, rgba(201,87,61,0.35), transparent 60%);
     pointer-events: none;
   }
   .risk-head {
@@ -441,14 +441,14 @@
     position: relative;
   }
   .risk h3 {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 300;
     font-size: clamp(1.8rem, 3.2vw, 2.8rem);
     line-height: 1.1;
     letter-spacing: -0.025em;
     max-width: 800px;
   }
-  .risk h3 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water-pale); }
+  .risk h3 em { font-family: 'Inter', sans-serif; font-style: italic; color: var(--water-pale); }
   .risk-head .lab { color: rgba(242,238,229,0.6); }
   .risk-grid {
     display: grid; grid-template-columns: 1fr 1fr;
@@ -471,7 +471,7 @@
   }
   .risk-card .num-tag .x { color: rgba(242,238,229,0.5); }
   .risk-card h4 {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 300;
     font-size: 1.6rem;
     line-height: 1.2;
@@ -479,7 +479,7 @@
     color: var(--paper);
     letter-spacing: -0.015em;
   }
-  .risk-card h4 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water-pale); }
+  .risk-card h4 em { font-family: 'Inter', sans-serif; font-style: italic; color: var(--water-pale); }
   .risk-card p {
     color: rgba(242,238,229,0.7);
     font-size: 14.5px;
@@ -528,12 +528,12 @@
     width: 32px; height: 32px;
     background: radial-gradient(circle at 35% 30%, #fff 0%, var(--water-pale) 30%, var(--water) 100%);
     border: 6px solid var(--paper-2);
-    box-shadow: 0 0 0 1px var(--water), 0 12px 30px rgba(31,74,85,0.3);
+    box-shadow: 0 0 0 1px var(--water), 0 12px 30px rgba(201,87,61,0.3);
   }
   .axis-pt .lab { display: block; margin-bottom: 12px; }
   .axis-pt.center .lab { color: var(--water); }
   .axis-pt h4 {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 1.3rem;
     margin-bottom: 12px;
@@ -541,7 +541,7 @@
     letter-spacing: -0.015em;
   }
   .axis-pt.center h4 {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Inter', sans-serif;
     font-style: italic;
     font-weight: 400;
     font-size: 1.7rem;
@@ -555,10 +555,10 @@
     margin: 0 auto;
   }
   .axis-pt.center p { color: var(--ink-soft); font-size: 14px; max-width: 280px; }
-  .axis-pt.center p em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); }
+  .axis-pt.center p em { font-family: 'Inter', sans-serif; font-style: italic; color: var(--water); }
 
   .positioning-claim {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Inter', sans-serif;
     font-size: clamp(1.6rem, 2.8vw, 2.2rem);
     font-weight: 400;
     line-height: 1.3;
@@ -581,7 +581,7 @@
   }
   .agent-head .lab { display: block; margin-bottom: 28px; color: var(--water); }
   .agent-head h3 {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 200;
     font-size: clamp(2.4rem, 4.6vw, 4rem);
     line-height: 0.95;
@@ -592,7 +592,7 @@
     text-decoration: line-through;
     text-decoration-color: var(--water);
     text-decoration-thickness: 2px;
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Inter', sans-serif;
     font-style: italic;
     font-weight: 400;
     display: block;
@@ -600,7 +600,7 @@
     font-size: 0.7em;
   }
   .agent-head h3 em {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Inter', sans-serif;
     font-style: italic;
     color: var(--water);
     font-weight: 400;
@@ -611,7 +611,7 @@
     font-size: 1.05rem;
     margin-bottom: 22px;
   }
-  .agent-body p em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); }
+  .agent-body p em { font-family: 'Inter', sans-serif; font-style: italic; color: var(--water); }
   .agent-traits {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -637,7 +637,7 @@
     display: block;
   }
   .trait h5 {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Inter', sans-serif;
     font-style: italic;
     font-weight: 400;
     font-size: 1.3rem;
@@ -660,13 +660,13 @@
   }
   .pillars-head .left .lab { display: block; margin-bottom: 24px; color: var(--water); }
   .pillars-head h3 {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 300;
     font-size: clamp(2rem, 3.6vw, 3rem);
     line-height: 1.05;
     letter-spacing: -0.025em;
   }
-  .pillars-head h3 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); }
+  .pillars-head h3 em { font-family: 'Inter', sans-serif; font-style: italic; color: var(--water); }
 
   .pillars-grid {
     display: grid;
@@ -700,7 +700,7 @@
     background: var(--water);
   }
   .pillar h4 {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Inter', sans-serif;
     font-style: italic;
     font-weight: 400;
     font-size: 2.4rem;
@@ -736,7 +736,7 @@
 
   /* === SECTION 03 — MÉCANISME / CASES === */
   .cases-intro {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Inter', sans-serif;
     font-size: clamp(1.6rem, 2.8vw, 2.2rem);
     line-height: 1.25;
     font-weight: 400;
@@ -759,7 +759,7 @@
 
   .case-head { position: sticky; top: 120px; align-self: start; }
   .case-head .case-num {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Inter', sans-serif;
     font-style: italic;
     font-weight: 400;
     font-size: 6.5rem;
@@ -770,14 +770,14 @@
   }
   .case-head .lab { display: block; margin-bottom: 16px; }
   .case-head h3 {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 300;
     font-size: clamp(2rem, 3.4vw, 2.8rem);
     line-height: 0.95;
     letter-spacing: -0.03em;
     margin-bottom: 28px;
   }
-  .case-head h3 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); }
+  .case-head h3 em { font-family: 'Inter', sans-serif; font-style: italic; color: var(--water); }
   .case-head .pillar-tags { display: flex; gap: 8px; flex-wrap: wrap; }
   .case-head .pillar-tag {
     font-family: 'JetBrains Mono', monospace;
@@ -792,7 +792,7 @@
 
   .case-body { display: flex; flex-direction: column; gap: 0; }
   .case-body .lead {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Inter', sans-serif;
     font-size: clamp(1.4rem, 2.2vw, 1.9rem);
     line-height: 1.3;
     font-weight: 400;
@@ -835,7 +835,7 @@
     line-height: 1.6;
   }
   .case-body .note .lab { color: var(--water); display:block; margin-bottom: 8px; }
-  .case-body .note strong { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: var(--ink); font-size: 1.1em; }
+  .case-body .note strong { font-family: 'Inter', sans-serif; font-style: italic; font-weight: 400; color: var(--ink); font-size: 1.1em; }
 
   /* === CLOSING === */
   .closing {
@@ -850,7 +850,7 @@
     box-shadow:
       inset 0 0 0 1px rgba(13,20,22,0.08),
       inset 0 -16px 40px rgba(13,20,22,0.18),
-      0 20px 60px rgba(31,74,85,0.25);
+      0 20px 60px rgba(201,87,61,0.25);
     position: relative;
     animation: bob 6s ease-in-out infinite;
   }
@@ -861,14 +861,14 @@
   }
   .closing .eyebrow { color: var(--water); margin-bottom: 36px; display: inline-block; }
   .closing h2 {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 200;
     font-size: clamp(3rem, 7vw, 6rem);
     line-height: 0.92;
     letter-spacing: -0.045em;
     margin-bottom: 50px;
   }
-  .closing h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); font-weight: 400; }
+  .closing h2 em { font-family: 'Inter', sans-serif; font-style: italic; color: var(--water); font-weight: 400; }
   .closing p {
     color: var(--ink-soft);
     font-size: 1.15rem;
@@ -876,7 +876,7 @@
     margin: 0 auto 24px;
     line-height: 1.6;
   }
-  .closing p em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); }
+  .closing p em { font-family: 'Inter', sans-serif; font-style: italic; color: var(--water); }
   .closing .sub-note {
     margin-top: 36px;
     color: var(--muted);
@@ -895,7 +895,7 @@
     color: var(--paper);
     text-decoration: none;
     border-radius: 100px;
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 14px;
     letter-spacing: 0.04em;
