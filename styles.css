@@ -589,15 +589,6 @@ section { padding: 140px 0; position: relative; }
 }
 .pillar:last-child { border-right: none; }
 .pillar:hover { background: var(--bg-2); }
-.pillar.featured { background: var(--orange-pale); position: relative; }
-.pillar.featured::before {
-  content: ""; position: absolute; top: 0; left: 0;
-  width: 3px; height: 100%; background: var(--orange);
-}
-.pillar.featured:hover { background: var(--orange-pale); }
-.pillar.featured .tagline { color: var(--ink-soft); }
-.pillar.featured ul li { color: var(--ink); }
-.pillar.featured ul li b { font-weight: 700; color: var(--ink); }
 .pillar .pillar-head {
   display: flex; justify-content: space-between; align-items: center;
   margin-bottom: 24px;
