@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orchestra × BE WTR — Le prochain chapitre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@200;300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F2EEE5;
+    --paper-2: #EAE4D6;
+    --paper-3: #DDD5C2;
+    --ink: #0D1416;
+    --ink-2: #1A2326;
+    --ink-soft: #2E3A3D;
+    --muted: #6E6A60;
+    --muted-2: #94908A;
+    --water: #1F4A55;
+    --water-soft: #4D7780;
+    --water-pale: #B7C8CC;
+    --aqua: #6FA0A8;
+    --line: rgba(13,20,22,0.10);
+    --line-2: rgba(13,20,22,0.18);
+    --line-strong: rgba(13,20,22,0.35);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Hanken Grotesk', -apple-system, system-ui, sans-serif;
+    font-weight: 350;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    font-feature-settings: "ss01", "ss02", "kern";
+  }
+
+  /* Subtle paper texture */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(ellipse 90% 60% at 50% 0%, rgba(31,74,85,0.04), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 100% 100%, rgba(183,200,204,0.18), transparent 60%);
+  }
+  body::after {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none; z-index: 1;
+    opacity: 0.06;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+  }
+
+  .wrap {
+    position: relative; z-index: 2;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 56px;
+  }
+
+  /* === TYPOGRAPHY === */
+  .serif { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; }
+  .mono  { font-family: 'JetBrains Mono', monospace; font-weight: 400; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .eyebrow.muted { color: var(--muted); }
+  .eyebrow.water { color: var(--water); }
+  .eyebrow .dot { display:inline-block; width:6px; height:6px; background: var(--water); border-radius:50%; margin-right:10px; vertical-align: middle; }
+  .lab { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+
+  /* === NAV === */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 80;
+    padding: 22px 56px;
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+    background: linear-gradient(to bottom, rgba(242,238,229,0.95), rgba(242,238,229,0.6) 70%, transparent);
+    backdrop-filter: blur(10px) saturate(120%);
+    -webkit-backdrop-filter: blur(10px) saturate(120%);
+  }
+  .nav .brand {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: var(--ink);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .nav .brand .glyph {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #fff 0%, var(--water-pale) 35%, var(--water) 100%);
+    box-shadow: inset 0 0 0 1px rgba(13,20,22,0.15);
+    position: relative;
+  }
+  .nav .brand .glyph::after {
+    content:""; position:absolute; inset: 4px; border-radius:50%;
+    background: radial-gradient(ellipse at 30% 25%, rgba(255,255,255,0.7), transparent 50%);
+  }
+  .nav .center {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .nav .center b { color: var(--water); font-weight: 500; }
+  .nav ul {
+    display: flex; gap: 28px; list-style: none; justify-self: end;
+  }
+  .nav a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--muted); text-decoration: none;
+    transition: color 0.25s; display: inline-flex; gap: 8px; align-items: baseline;
+  }
+  .nav a span { color: var(--water); }
+  .nav a:hover, .nav a.active { color: var(--ink); }
+
+  /* === HERO === */
+  .hero {
+    min-height: 92vh;
+    padding-top: 140px;
+    padding-bottom: 80px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    position: relative;
+  }
+  .hero-top {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-top .cell .lab { display:block; margin-bottom: 8px; }
+  .hero-top .cell .val { font-size: 14px; color: var(--ink); font-weight: 500; }
+
+  .hero-stage {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 48px;
+    align-items: end;
+    padding: 80px 0 40px;
+  }
+  .hero-title {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 200;
+    font-size: clamp(3.6rem, 9.6vw, 9.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+    color: var(--ink);
+  }
+  .hero-title em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--water);
+    letter-spacing: -0.02em;
+  }
+  .hero-title .drop {
+    display: inline-flex; align-items: center; gap: 24px;
+  }
+  .hero-title .water-drop {
+    width: 0.85em; height: 0.85em; border-radius: 50%;
+    background: radial-gradient(circle at 30% 25%, #ffffff 0%, var(--water-pale) 30%, var(--water) 95%);
+    box-shadow:
+      inset 0 0 0 1px rgba(13,20,22,0.12),
+      inset 0 -10px 30px rgba(13,20,22,0.18),
+      0 12px 40px rgba(31,74,85,0.25);
+    position: relative; flex-shrink: 0;
+    animation: bob 6s ease-in-out infinite;
+  }
+  .hero-title .water-drop::after {
+    content: ""; position: absolute; top: 12%; left: 18%;
+    width: 28%; height: 28%; border-radius: 50%;
+    background: radial-gradient(ellipse at 30% 30%, rgba(255,255,255,0.95), transparent 60%);
+  }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+  .hero-aside {
+    border-left: 1px solid var(--line-2);
+    padding-left: 28px;
+  }
+  .hero-aside .lab { display: block; margin-bottom: 18px; }
+  .hero-aside p {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .hero-aside p em { font-style: italic; color: var(--water); }
+
+  .hero-bottom {
+    margin-top: 60px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .hero-bottom .lead {
+    font-size: 1.05rem; max-width: 540px; line-height: 1.55;
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+  .hero-bottom .cell .lab { display:block; margin-bottom: 8px; }
+  .hero-bottom .cell .val { font-size: 13px; color: var(--ink); font-weight: 500; line-height: 1.4; }
+
+  /* === SECTION SHELL === */
+  section {
+    padding: 160px 0;
+    position: relative;
+  }
+  .section-head {
+    display: grid; grid-template-columns: auto 1fr auto;
+    gap: 48px; align-items: end;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--line-2);
+    margin-bottom: 96px;
+  }
+  .section-head .num {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 200;
+    font-size: clamp(4rem, 10vw, 9rem);
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+    color: var(--ink);
+  }
+  .section-head .num em {
+    font-family: 'Instrument Serif', serif; font-style: italic;
+    color: var(--water);
+  }
+  .section-head .title {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 3.6vw, 3.2rem);
+    line-height: 1.0;
+    letter-spacing: -0.028em;
+  }
+  .section-head .title em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); }
+  .section-head .label { display: block; margin-bottom: 18px; }
+  .section-head .meta { text-align: right; color: var(--muted); font-size: 13px; line-height: 1.5; max-width: 220px; }
+
+  /* === SECTION 01 — LE MOMENT === */
+  .moment-intro {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+    line-height: 1.18;
+    max-width: 1100px;
+    margin-bottom: 100px;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+  }
+  .moment-intro em { font-style: italic; color: var(--water); }
+  .moment-intro .ampersand { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); font-size: 1.15em; }
+
+  /* Stats — pulled apart, editorial */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+  }
+  .stat {
+    padding: 44px 32px 40px;
+    border-right: 1px solid var(--line-2);
+    position: relative;
+    transition: background 0.4s;
+  }
+  .stat:last-child { border-right: none; }
+  .stat:hover { background: var(--paper-2); }
+  .stat .lab { display:block; margin-bottom: 28px; }
+  .stat .num {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 200;
+    font-size: clamp(3rem, 5.6vw, 5rem);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    margin-bottom: 18px;
+    color: var(--ink);
+  }
+  .stat .num sup {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 0.32em;
+    color: var(--water);
+    vertical-align: super;
+    margin-left: 4px;
+    font-weight: 400;
+  }
+  .stat .desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.55;
+    max-width: 180px;
+  }
+
+  /* Wave divider */
+  .wave-sep {
+    height: 80px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1440' height='80' viewBox='0 0 1440 80' preserveAspectRatio='none'><path d='M0 40 C 180 10, 360 70, 540 40 S 900 10, 1080 40 S 1440 70, 1440 40' stroke='%231F4A55' stroke-width='1' fill='none' opacity='0.4'/></svg>");
+    background-size: 100% 100%;
+    margin: 60px 0 80px;
+  }
+
+  .moment-pull {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1.25;
+    color: var(--ink);
+    max-width: 880px;
+    margin-left: auto;
+    text-align: right;
+    letter-spacing: -0.01em;
+    position: relative;
+  }
+  .moment-pull::before {
+    content: "”";
+    font-family: 'Instrument Serif', serif;
+    font-size: 6rem;
+    color: var(--water);
+    position: absolute;
+    left: -50px;
+    top: 30px;
+    line-height: 0.5;
+  }
+
+  /* Cadence block */
+  .cadence-block { margin-top: 160px; padding-top: 80px; border-top: 1px solid var(--line); }
+  .cadence-head {
+    display: grid; grid-template-columns: 1fr auto; gap: 60px;
+    align-items: end;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+  }
+  .cadence-head h3 {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    max-width: 800px;
+  }
+  .cadence-head h3 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); }
+  .cadence-head .meta { color: var(--muted); font-size: 13px; line-height: 1.55; max-width: 260px; text-align: right; }
+
+  .marquee {
+    overflow: hidden;
+    position: relative;
+    margin: 0 -56px;
+    padding: 18px 0;
+    border-top: 1px solid var(--line-2);
+    border-bottom: 1px solid var(--line-2);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  }
+  .marquee + .marquee { border-top: none; }
+  .marquee-track {
+    display: flex; gap: 0;
+    animation: marquee 110s linear infinite;
+    width: max-content;
+  }
+  .marquee-track.reverse { animation-duration: 130s; animation-direction: reverse; }
+  .marquee-item {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 1.5rem;
+    padding: 6px 28px;
+    white-space: nowrap;
+    color: var(--ink);
+    border-right: 1px solid var(--line-2);
+    letter-spacing: -0.01em;
+  }
+  .marquee-item.accent {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--water);
+    font-weight: 400;
+  }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  .cadence-foot {
+    margin-top: 60px;
+    display: grid; grid-template-columns: 1fr 1.6fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .cadence-foot .col-a {
+    border-left: 1px solid var(--water);
+    padding-left: 28px;
+  }
+  .cadence-foot .col-a .lab { display: block; margin-bottom: 18px; color: var(--water); }
+  .cadence-foot .col-a .big {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 200;
+    font-size: clamp(3.4rem, 6vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .cadence-foot .col-a .big em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); font-size: 0.5em; vertical-align: super; }
+  .cadence-foot .col-a p { color: var(--muted); font-size: 14px; line-height: 1.55; max-width: 280px; }
+  .cadence-foot .col-b .lab { display: block; margin-bottom: 18px; color: var(--water); }
+  .cadence-foot .col-b p { font-size: 1.05rem; line-height: 1.65; color: var(--ink-soft); max-width: 640px; }
+  .cadence-foot .col-b p em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); }
+
+  /* Risk panel */
+  .risk {
+    margin-top: 140px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 64px 76px;
+    position: relative;
+    overflow: hidden;
+  }
+  .risk::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 0% 40%, rgba(31,74,85,0.45), transparent 60%);
+    pointer-events: none;
+  }
+  .risk-head {
+    display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 40px;
+    margin-bottom: 56px; padding-bottom: 28px;
+    border-bottom: 1px solid rgba(242,238,229,0.15);
+    position: relative;
+  }
+  .risk h3 {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    max-width: 800px;
+  }
+  .risk h3 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water-pale); }
+  .risk-head .lab { color: rgba(242,238,229,0.6); }
+  .risk-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0;
+    position: relative;
+  }
+  .risk-card {
+    padding: 0 40px;
+    border-right: 1px solid rgba(242,238,229,0.12);
+  }
+  .risk-card:first-child { padding-left: 0; }
+  .risk-card:last-child { border-right: none; padding-right: 0; padding-left: 40px; }
+  .risk-card .num-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    color: var(--water-pale);
+    margin-bottom: 24px;
+    display: block;
+  }
+  .risk-card .num-tag .x { color: rgba(242,238,229,0.5); }
+  .risk-card h4 {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin-bottom: 22px;
+    color: var(--paper);
+    letter-spacing: -0.015em;
+  }
+  .risk-card h4 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water-pale); }
+  .risk-card p {
+    color: rgba(242,238,229,0.7);
+    font-size: 14.5px;
+    line-height: 1.65;
+  }
+
+  /* === SECTION 02 — L'IDÉE === */
+  .positioning-vis {
+    margin: 80px 0 80px;
+    padding: 100px 60px 80px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    position: relative;
+  }
+  .axis {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 1fr;
+    gap: 0;
+    align-items: start;
+  }
+  .axis::before {
+    content: "";
+    position: absolute;
+    top: 32px; left: 8%; right: 8%;
+    height: 1px;
+    background: linear-gradient(to right, transparent 0%, var(--ink) 20%, var(--water) 50%, var(--ink) 80%, transparent 100%);
+    z-index: 1;
+  }
+  .axis-pt {
+    text-align: center;
+    position: relative;
+    padding: 0 24px;
+    z-index: 2;
+  }
+  .axis-pt .dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--ink);
+    margin: 0 auto 36px;
+    position: relative;
+    border: 4px solid var(--paper-2);
+    box-shadow: 0 0 0 1px var(--ink);
+  }
+  .axis-pt.center .dot {
+    width: 32px; height: 32px;
+    background: radial-gradient(circle at 35% 30%, #fff 0%, var(--water-pale) 30%, var(--water) 100%);
+    border: 6px solid var(--paper-2);
+    box-shadow: 0 0 0 1px var(--water), 0 12px 30px rgba(31,74,85,0.3);
+  }
+  .axis-pt .lab { display: block; margin-bottom: 12px; }
+  .axis-pt.center .lab { color: var(--water); }
+  .axis-pt h4 {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 400;
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+  }
+  .axis-pt.center h4 {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.7rem;
+    color: var(--water);
+  }
+  .axis-pt p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.55;
+    max-width: 240px;
+    margin: 0 auto;
+  }
+  .axis-pt.center p { color: var(--ink-soft); font-size: 14px; max-width: 280px; }
+  .axis-pt.center p em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); }
+
+  .positioning-claim {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    font-weight: 400;
+    line-height: 1.3;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    color: var(--ink);
+    letter-spacing: -0.012em;
+  }
+  .positioning-claim em { font-style: italic; color: var(--water); }
+
+  /* Agent block */
+  .agent {
+    margin-top: 160px;
+    padding-top: 100px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 80px;
+  }
+  .agent-head .lab { display: block; margin-bottom: 28px; color: var(--water); }
+  .agent-head h3 {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 200;
+    font-size: clamp(2.4rem, 4.6vw, 4rem);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+  }
+  .agent-head h3 .strike {
+    color: var(--muted);
+    text-decoration: line-through;
+    text-decoration-color: var(--water);
+    text-decoration-thickness: 2px;
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 12px;
+    font-size: 0.7em;
+  }
+  .agent-head h3 em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--water);
+    font-weight: 400;
+  }
+  .agent-body p {
+    color: var(--ink-soft);
+    line-height: 1.6;
+    font-size: 1.05rem;
+    margin-bottom: 22px;
+  }
+  .agent-body p em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); }
+  .agent-traits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 40px;
+    border-top: 1px solid var(--line-2);
+    border-bottom: 1px solid var(--line-2);
+  }
+  .trait {
+    padding: 26px 24px 26px 0;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .trait:nth-child(2n) { padding-left: 24px; padding-right: 0; border-right: none; }
+  .trait:nth-child(n+3) { padding-top: 26px; }
+  .trait:nth-last-child(-n+2) { border-bottom: none; }
+  .trait .ix {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--water);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .trait h5 {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .trait p {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.55;
+  }
+
+  /* Pillars */
+  .pillars { margin-top: 160px; padding-top: 100px; border-top: 1px solid var(--line); }
+  .pillars-head {
+    margin-bottom: 80px;
+    display: grid; grid-template-columns: 1fr 1.6fr;
+    gap: 60px; align-items: end;
+  }
+  .pillars-head .left .lab { display: block; margin-bottom: 24px; color: var(--water); }
+  .pillars-head h3 {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 3.6vw, 3rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+  }
+  .pillars-head h3 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+  }
+  .pillar {
+    padding: 44px 28px 44px;
+    border-right: 1px solid var(--line-2);
+    transition: background 0.4s;
+    position: relative;
+  }
+  .pillar:last-child { border-right: none; }
+  .pillar:hover { background: var(--paper-2); }
+  .pillar .pillar-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 32px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  .pillar .pillar-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--water);
+    letter-spacing: 0.22em;
+  }
+  .pillar .pillar-marker {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--water);
+  }
+  .pillar h4 {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 2.4rem;
+    margin-bottom: 16px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .pillar .tagline {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 28px;
+    line-height: 1.55;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .pillar ul {
+    list-style: none;
+  }
+  .pillar ul li {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    padding: 8px 0 8px 18px;
+    position: relative;
+  }
+  .pillar ul li::before {
+    content: "";
+    width: 6px; height: 1px; background: var(--water);
+    position: absolute;
+    left: 0; top: 16px;
+  }
+
+  /* === SECTION 03 — MÉCANISME / CASES === */
+  .cases-intro {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    line-height: 1.25;
+    font-weight: 400;
+    max-width: 1100px;
+    margin-bottom: 100px;
+    color: var(--ink);
+    letter-spacing: -0.012em;
+  }
+  .cases-intro em { font-style: italic; color: var(--water); }
+
+  .case {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 80px;
+    padding: 80px 0;
+    border-top: 1px solid var(--line-2);
+    position: relative;
+  }
+  .case:last-of-type { border-bottom: 1px solid var(--line-2); }
+
+  .case-head { position: sticky; top: 120px; align-self: start; }
+  .case-head .case-num {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 6.5rem;
+    line-height: 1;
+    color: var(--water);
+    margin-bottom: 32px;
+    letter-spacing: -0.04em;
+  }
+  .case-head .lab { display: block; margin-bottom: 16px; }
+  .case-head h3 {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 3.4vw, 2.8rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 28px;
+  }
+  .case-head h3 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); }
+  .case-head .pillar-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .case-head .pillar-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--water);
+    border: 1px solid var(--water);
+    padding: 7px 12px;
+    border-radius: 100px;
+  }
+
+  .case-body { display: flex; flex-direction: column; gap: 0; }
+  .case-body .lead {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+    line-height: 1.3;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 40px;
+    letter-spacing: -0.012em;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--line);
+  }
+  .case-body .lead em { font-style: italic; color: var(--water); }
+  .case-body ul { list-style: none; }
+  .case-body ul li {
+    color: var(--ink-soft);
+    line-height: 1.55;
+    padding: 18px 0 18px 60px;
+    position: relative;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+    display: flex; align-items: flex-start; gap: 0;
+  }
+  .case-body ul li:last-child { border-bottom: none; }
+  .case-body ul li::before {
+    content: counter(li, decimal-leading-zero);
+    counter-increment: li;
+    position: absolute;
+    left: 0; top: 19px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    color: var(--water);
+  }
+  .case-body ul { counter-reset: li; }
+  .case-body .note {
+    margin-top: 36px;
+    padding: 28px 32px;
+    background: var(--paper-2);
+    border-left: 3px solid var(--water);
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .case-body .note .lab { color: var(--water); display:block; margin-bottom: 8px; }
+  .case-body .note strong { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: var(--ink); font-size: 1.1em; }
+
+  /* === CLOSING === */
+  .closing {
+    padding: 200px 0 120px;
+    text-align: center;
+    position: relative;
+  }
+  .closing .water-mark {
+    width: 90px; height: 90px; margin: 0 auto 50px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ffffff 0%, var(--water-pale) 25%, var(--water) 95%);
+    box-shadow:
+      inset 0 0 0 1px rgba(13,20,22,0.08),
+      inset 0 -16px 40px rgba(13,20,22,0.18),
+      0 20px 60px rgba(31,74,85,0.25);
+    position: relative;
+    animation: bob 6s ease-in-out infinite;
+  }
+  .closing .water-mark::after {
+    content: ""; position: absolute; top: 12%; left: 18%;
+    width: 32%; height: 32%; border-radius: 50%;
+    background: radial-gradient(ellipse at 30% 30%, rgba(255,255,255,0.95), transparent 60%);
+  }
+  .closing .eyebrow { color: var(--water); margin-bottom: 36px; display: inline-block; }
+  .closing h2 {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 200;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+    margin-bottom: 50px;
+  }
+  .closing h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); font-weight: 400; }
+  .closing p {
+    color: var(--ink-soft);
+    font-size: 1.15rem;
+    max-width: 720px;
+    margin: 0 auto 24px;
+    line-height: 1.6;
+  }
+  .closing p em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--water); }
+  .closing .sub-note {
+    margin-top: 36px;
+    color: var(--muted);
+    font-size: 14px;
+    max-width: 540px;
+    margin-left: auto; margin-right: auto;
+    line-height: 1.6;
+  }
+  .closing-cta {
+    margin-top: 60px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 28px 18px 32px;
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+    border-radius: 100px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    transition: transform 0.3s, background 0.3s;
+  }
+  .closing-cta:hover { background: var(--water); transform: translateY(-2px); }
+  .closing-cta .arrow {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--paper); color: var(--ink);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    transition: transform 0.3s;
+  }
+  .closing-cta:hover .arrow { transform: translateX(4px); background: var(--water-pale); }
+  .closing-meta {
+    margin-top: 120px;
+    padding-top: 36px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 24px;
+    text-align: left;
+  }
+  .closing-meta .lab { color: var(--muted); }
+  .closing-meta .center { text-align: center; }
+  .closing-meta .end { text-align: right; }
+  .closing-meta .mono { color: var(--ink); font-size: 12.5px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.9s ease, transform 0.9s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* Responsive */
+  @media (max-width: 1100px) {
+    .pillars-grid { grid-template-columns: 1fr 1fr; border-bottom: none; }
+    .pillar:nth-child(2) { border-right: none; }
+    .pillar:nth-child(n+3) { border-top: 1px solid var(--line-2); }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .stat:nth-child(2) { border-right: none; }
+    .stat:nth-child(n+3) { border-top: 1px solid var(--line-2); }
+  }
+  @media (max-width: 900px) {
+    .wrap { padding: 0 24px; }
+    .nav { padding: 14px 24px; grid-template-columns: 1fr auto; }
+    .nav .center, .nav ul { display: none; }
+    .section-head { grid-template-columns: 1fr; gap: 24px; margin-bottom: 60px; }
+    .section-head .meta { text-align: left; }
+    .hero-top, .hero-bottom, .hero-stage { grid-template-columns: 1fr; }
+    .hero-aside { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 28px; }
+    .case { grid-template-columns: 1fr; gap: 40px; padding: 60px 0; }
+    .case-head { position: static; }
+    .agent, .pillars-head, .cadence-foot, .cadence-head { grid-template-columns: 1fr; gap: 32px; }
+    .cadence-head .meta { text-align: left; }
+    .axis { grid-template-columns: 1fr; gap: 60px; }
+    .axis::before { display: none; }
+    .risk-grid { grid-template-columns: 1fr; }
+    .risk-card { padding: 0 !important; border-right: none; border-bottom: 1px solid rgba(242,238,229,0.12); padding-bottom: 32px !important; margin-bottom: 32px; }
+    .risk-card:last-child { border-bottom: none; padding-bottom: 0 !important; margin-bottom: 0; }
+    .risk { padding: 50px 28px; }
+    .risk-head { grid-template-columns: 1fr; }
+    section { padding: 80px 0; }
+    .closing-meta { grid-template-columns: 1fr; text-align: left; }
+    .closing-meta .center, .closing-meta .end { text-align: left; }
+  }
+  @media (max-width: 600px) {
+    .stats-grid, .pillars-grid { grid-template-columns: 1fr; }
+    .stat, .pillar { border-right: none; border-bottom: 1px solid var(--line-2); }
+    .stat:last-child, .pillar:last-child { border-bottom: none; }
+    .marquee-item { font-size: 1.15rem; padding: 4px 16px; }
+    .agent-traits { grid-template-columns: 1fr; }
+    .trait { padding: 22px 0 !important; border-right: none; border-bottom: 1px solid var(--line); }
+    .moment-pull::before { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="brand">
+    <span class="glyph"></span>
+    <span>Orchestra <span style="color: var(--water);">×</span> BE WTR</span>
+  </div>
+  <div class="center">Document de travail · <b>Confidentiel</b> · Mai 2026</div>
+  <ul>
+    <li><a href="#moment" data-link="moment"><span>01 /</span>Le Moment</a></li>
+    <li><a href="#idee" data-link="idee"><span>02 /</span>L'Idée</a></li>
+    <li><a href="#mecanisme" data-link="mecanisme"><span>03 /</span>Le Mécanisme</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-top">
+      <div class="cell">
+        <span class="lab">Préparé par</span>
+        <span class="val">Orchestra Intelligence</span>
+      </div>
+      <div class="cell">
+        <span class="lab">Destinataire</span>
+        <span class="val">M. Hecker · Direction Marketing BE WTR</span>
+      </div>
+      <div class="cell" style="text-align: right;">
+        <span class="lab">Édition</span>
+        <span class="val">No. 01 — Mai 2026</span>
+      </div>
+    </div>
+
+    <div class="hero-stage">
+      <div>
+        <h1 class="hero-title">
+          Orchestrer<br>
+          <span class="drop"><span class="water-drop"></span><em>le prochain</em></span><br>
+          chapitre de<br>
+          <em>BE WTR.</em>
+        </h1>
+      </div>
+      <aside class="hero-aside">
+        <span class="lab">Note d'intention</span>
+        <p>
+          Une lecture du moment, une proposition de <em>positionnement</em>, et trois pistes concrètes — préparées pour Mike Hecker et la direction marketing.
+        </p>
+      </aside>
+    </div>
+
+    <div class="hero-bottom">
+      <p class="lead">
+        Ce document est un point de départ — pas un pitch. Trois sections, une conviction simple&nbsp;: le marché tire, l'enjeu est l'échelle, et la cadence à laquelle l'IA redessine ce qu'industrialiser un standard premium veut dire.
+      </p>
+      <div class="cell">
+        <span class="lab">Format</span>
+        <span class="val">Conversation, pas pitch</span>
+      </div>
+      <div class="cell">
+        <span class="lab">Lecture</span>
+        <span class="val">~ 12 minutes</span>
+      </div>
+      <div class="cell">
+        <span class="lab">Référence</span>
+        <span class="val">ORC—BWTR—2026.05</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION 01 — LE MOMENT -->
+  <section id="moment">
+    <div class="section-head reveal">
+      <div class="num">01<em>.</em></div>
+      <div>
+        <span class="eyebrow muted label"><span class="dot"></span>Situation &amp; Opportunité</span>
+        <h2 class="title">Le <em>moment</em> BE WTR.</h2>
+      </div>
+      <div class="meta">Section 01 de 03 — chiffres publiés, sources ouvertes (Crunchbase, presse spécialisée, déclarations société).</div>
+    </div>
+
+    <p class="moment-intro reveal">
+      BE WTR n'a plus de problème de demande. Le sujet est désormais celui de <em>l'échelle</em> <span class="ampersand">&amp;</span> de la cadence à laquelle l'IA redessine ce qu'industrialiser un standard premium veut dire.
+    </p>
+
+    <div class="stats-grid reveal">
+      <div class="stat">
+        <span class="lab">A · Série C</span>
+        <div class="num">39<sup>M CHF</sup></div>
+        <div class="desc">Oct. 2024 — Convent, PeakBridge, Edmond de Rothschild.</div>
+      </div>
+      <div class="stat">
+        <span class="lab">B · Bottling</span>
+        <div class="num">20<sup>+ sites</sup></div>
+        <div class="desc">Réseau d'embouteillage visé à horizon fin 2025.</div>
+      </div>
+      <div class="stat">
+        <span class="lab">C · Géographies</span>
+        <div class="num">8<sup>pays</sup></div>
+        <div class="desc">Exploitation active. Expansion APAC + Amérique du Nord.</div>
+      </div>
+      <div class="stat">
+        <span class="lab">D · Marché 2031</span>
+        <div class="num">49<sup>Md $</sup></div>
+        <div class="desc">Eau premium mondiale — TCAC +8,23 %.</div>
+      </div>
+    </div>
+
+    <div class="wave-sep"></div>
+
+    <p class="moment-pull reveal">
+      Le marché tire. La capacité d'exécution dicte désormais le rythme.
+    </p>
+
+    <!-- Cadence -->
+    <div class="cadence-block">
+      <div class="cadence-head reveal">
+        <h3>L'IA va <em>trop vite</em>.<br>Et c'est rationnel — personne ne tient cette cadence.</h3>
+        <div class="meta">Modèles, outils et frameworks publiés depuis janvier 2025 — extrait non exhaustif.</div>
+      </div>
+
+      <div class="marquee">
+        <div class="marquee-track">
+          <span class="marquee-item">Claude 4.7</span>
+          <span class="marquee-item">GPT-5</span>
+          <span class="marquee-item accent">Gemini 3</span>
+          <span class="marquee-item">Llama 4</span>
+          <span class="marquee-item">Mistral Large 2</span>
+          <span class="marquee-item">DeepSeek R1</span>
+          <span class="marquee-item accent">Qwen 3</span>
+          <span class="marquee-item">Pixtral</span>
+          <span class="marquee-item">Nemotron 70B</span>
+          <span class="marquee-item">Phi-4</span>
+          <span class="marquee-item accent">Grok 4</span>
+          <span class="marquee-item">Command R+</span>
+          <span class="marquee-item">o3</span>
+          <span class="marquee-item">Sora</span>
+          <span class="marquee-item accent">Runway Gen-3</span>
+          <span class="marquee-item">Veo 3</span>
+          <span class="marquee-item">Kling 2</span>
+          <span class="marquee-item">Pika 2</span>
+          <span class="marquee-item">Hailuo</span>
+          <span class="marquee-item accent">Midjourney v7</span>
+          <span class="marquee-item">Flux.1 Pro</span>
+          <span class="marquee-item">Ideogram 3</span>
+          <span class="marquee-item">Recraft V3</span>
+          <span class="marquee-item">Suno v4</span>
+          <span class="marquee-item accent">ElevenLabs v3</span>
+          <span class="marquee-item">Claude 4.7</span>
+          <span class="marquee-item">GPT-5</span>
+          <span class="marquee-item accent">Gemini 3</span>
+          <span class="marquee-item">Llama 4</span>
+          <span class="marquee-item">Mistral Large 2</span>
+          <span class="marquee-item">DeepSeek R1</span>
+          <span class="marquee-item accent">Qwen 3</span>
+          <span class="marquee-item">Pixtral</span>
+          <span class="marquee-item">Nemotron 70B</span>
+          <span class="marquee-item">Phi-4</span>
+          <span class="marquee-item accent">Grok 4</span>
+          <span class="marquee-item">Command R+</span>
+          <span class="marquee-item">o3</span>
+          <span class="marquee-item">Sora</span>
+          <span class="marquee-item accent">Runway Gen-3</span>
+          <span class="marquee-item">Veo 3</span>
+          <span class="marquee-item">Kling 2</span>
+          <span class="marquee-item">Pika 2</span>
+          <span class="marquee-item">Hailuo</span>
+          <span class="marquee-item accent">Midjourney v7</span>
+          <span class="marquee-item">Flux.1 Pro</span>
+          <span class="marquee-item">Ideogram 3</span>
+          <span class="marquee-item">Recraft V3</span>
+          <span class="marquee-item">Suno v4</span>
+          <span class="marquee-item accent">ElevenLabs v3</span>
+        </div>
+      </div>
+
+      <div class="marquee">
+        <div class="marquee-track reverse">
+          <span class="marquee-item">Cursor</span>
+          <span class="marquee-item accent">Windsurf</span>
+          <span class="marquee-item">Devin</span>
+          <span class="marquee-item">v0</span>
+          <span class="marquee-item">bolt.new</span>
+          <span class="marquee-item accent">Lovable</span>
+          <span class="marquee-item">Replit Agent</span>
+          <span class="marquee-item">Claude Code</span>
+          <span class="marquee-item">LangGraph</span>
+          <span class="marquee-item accent">CrewAI</span>
+          <span class="marquee-item">AutoGen</span>
+          <span class="marquee-item">Mastra</span>
+          <span class="marquee-item">Letta</span>
+          <span class="marquee-item accent">Pinecone</span>
+          <span class="marquee-item">Weaviate</span>
+          <span class="marquee-item">Qdrant</span>
+          <span class="marquee-item">Perplexity Pro</span>
+          <span class="marquee-item accent">Glean</span>
+          <span class="marquee-item">Notion AI</span>
+          <span class="marquee-item">Granola</span>
+          <span class="marquee-item">Modal</span>
+          <span class="marquee-item accent">MCP</span>
+          <span class="marquee-item">Realtime API</span>
+          <span class="marquee-item">Cartesia</span>
+          <span class="marquee-item">Vapi</span>
+          <span class="marquee-item">Cursor</span>
+          <span class="marquee-item accent">Windsurf</span>
+          <span class="marquee-item">Devin</span>
+          <span class="marquee-item">v0</span>
+          <span class="marquee-item">bolt.new</span>
+          <span class="marquee-item accent">Lovable</span>
+          <span class="marquee-item">Replit Agent</span>
+          <span class="marquee-item">Claude Code</span>
+          <span class="marquee-item">LangGraph</span>
+          <span class="marquee-item accent">CrewAI</span>
+          <span class="marquee-item">AutoGen</span>
+          <span class="marquee-item">Mastra</span>
+          <span class="marquee-item">Letta</span>
+          <span class="marquee-item accent">Pinecone</span>
+          <span class="marquee-item">Weaviate</span>
+          <span class="marquee-item">Qdrant</span>
+          <span class="marquee-item">Perplexity Pro</span>
+          <span class="marquee-item accent">Glean</span>
+          <span class="marquee-item">Notion AI</span>
+          <span class="marquee-item">Granola</span>
+          <span class="marquee-item">Modal</span>
+          <span class="marquee-item accent">MCP</span>
+          <span class="marquee-item">Realtime API</span>
+          <span class="marquee-item">Cartesia</span>
+          <span class="marquee-item">Vapi</span>
+        </div>
+      </div>
+
+      <div class="cadence-foot reveal">
+        <div class="col-a">
+          <span class="lab">…et environ</span>
+          <div class="big">~80<em>/sem</em></div>
+          <p>Nouveautés supplémentaires chaque semaine sur le périmètre IA générative.</p>
+        </div>
+        <div class="col-b">
+          <span class="lab">Ce que ça veut dire</span>
+          <p>
+            Aucune équipe interne, aucune agence généraliste ne peut suivre cette cadence sans <em>dissoudre son métier dans la veille</em>. La sélection — savoir ce qui sert le business et ce qu'on ignore — devient elle-même un métier.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Risk -->
+    <div class="risk reveal">
+      <div class="risk-head">
+        <h3>Deux pièges <em>structurels</em> à éviter en l'état actuel du marché.</h3>
+        <span class="lab">Diagnostic · 2 / 2</span>
+      </div>
+      <div class="risk-grid">
+        <div class="risk-card">
+          <span class="num-tag">Piège <span class="x">/</span> 01 — L'interne</span>
+          <h4>Demander à chaque équipe de devenir <em>experte en IA.</em></h4>
+          <p>
+            Au rythme de publication actuel, une équipe interne qui essaie de suivre l'IA passe plus de temps en veille qu'en métier. Le ratio s'inverse&nbsp;: l'outil cannibalise l'usage. Et les choix faits cette semaine peuvent être obsolètes le mois prochain.
+          </p>
+        </div>
+        <div class="risk-card">
+          <span class="num-tag">Piège <span class="x">/</span> 02 — L'externe</span>
+          <h4>Confier le sujet à un <em>cabinet généraliste.</em></h4>
+          <p>
+            Les grands cabinets vendent des roadmaps de transformation digitale. Les agences créatives livrent des slides. Aucun des deux n'opère l'outil au quotidien chez le client — et l'écart concurrentiel des 24 prochains mois ne se joue pas sur la stratégie, il se joue sur ce qui tourne en production.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 02 — L'IDÉE -->
+  <section id="idee">
+    <div class="section-head reveal">
+      <div class="num">02<em>.</em></div>
+      <div>
+        <span class="eyebrow muted label"><span class="dot"></span>Idée &amp; Positionnement</span>
+        <h2 class="title">Orchestra, <em>pile au milieu.</em></h2>
+      </div>
+      <div class="meta">Section 02 de 03 — une thèse, un format opératoire, quatre piliers de déploiement.</div>
+    </div>
+
+    <div class="positioning-vis reveal">
+      <div class="axis">
+        <div class="axis-pt">
+          <div class="dot"></div>
+          <span class="lab">À gauche</span>
+          <h4>Cabinet de conseil</h4>
+          <p>Stratégie, slides, recommandations. Sortie&nbsp;: un PowerPoint. La transformation est confiée au client.</p>
+        </div>
+        <div class="axis-pt center">
+          <div class="dot"></div>
+          <span class="lab">Orchestra</span>
+          <h4>Le milieu opéré</h4>
+          <p>Diagnostic <em>+</em> implémentation <em>+</em> opération continue. Sortie&nbsp;: des outils qui tournent, des agents qui produisent.</p>
+        </div>
+        <div class="axis-pt">
+          <div class="dot"></div>
+          <span class="lab">À droite</span>
+          <h4>Agence d'exécution</h4>
+          <p>Devs en régie, builds isolés. Sortie&nbsp;: un livrable technique. Le sens stratégique reste à porter ailleurs.</p>
+        </div>
+      </div>
+    </div>
+    <p class="positioning-claim reveal">
+      Ni cabinet, ni agence. Une équipe qui pense <em>et</em> opère — le standard premium, productisé puis tenu dans la durée.
+    </p>
+
+    <!-- Agent -->
+    <div class="agent">
+      <div class="agent-head reveal">
+        <span class="lab">Mise au point</span>
+        <h3>
+          <span class="strike">Pas un chatbot.</span>
+          Un <em>super-employé.</em>
+        </h3>
+      </div>
+      <div class="agent-body reveal">
+        <p>
+          La confusion la plus coûteuse aujourd'hui&nbsp;: assimiler un agent IA à un chatbot. Un chatbot répond à des questions. Un agent <em>fait le travail</em> — il prend en charge un workflow de bout en bout, dans vos outils, sans supervision continue.
+        </p>
+        <p>
+          Concrètement&nbsp;: un agent rédige et envoie, alimente le CRM, génère et publie, surveille et alerte, onboarde et certifie. Il ne remplace pas vos équipes — il leur retire la fraction du temps qui ne devrait jamais leur revenir.
+        </p>
+        <div class="agent-traits">
+          <div class="trait">
+            <span class="ix">01 · Autonome</span>
+            <h5>Agit, ne répond pas.</h5>
+            <p>Déclenche ses propres actions sur la base d'objectifs, pas de prompts.</p>
+          </div>
+          <div class="trait">
+            <span class="ix">02 · Intégré</span>
+            <h5>Dans vos outils.</h5>
+            <p>Vit dans WhatsApp, Slack, le CRM — pas dans un nouvel onglet à ouvrir chaque matin.</p>
+          </div>
+          <div class="trait">
+            <span class="ix">03 · Mesurable</span>
+            <h5>Chaque geste est un signal.</h5>
+            <p>Chaque action produit une donnée exploitable — base d'amélioration continue.</p>
+          </div>
+          <div class="trait">
+            <span class="ix">04 · Spécifique</span>
+            <h5>Un rôle, un agent.</h5>
+            <p>Un agent par rôle métier. Pas d'assistant universel — un super-employé focalisé.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pillars -->
+    <div class="pillars">
+      <div class="pillars-head reveal">
+        <div class="left">
+          <span class="lab">Vision par département</span>
+        </div>
+        <h3>Quatre piliers où l'agent IA <em>déplace structurellement</em> ce qui était possible chez BE WTR.</h3>
+      </div>
+      <div class="pillars-grid reveal">
+        <div class="pillar">
+          <div class="pillar-head">
+            <span class="pillar-num">P / 01</span>
+            <span class="pillar-marker"></span>
+          </div>
+          <h4>Sales</h4>
+          <p class="tagline">Industrialiser un cycle de vente B2B premium, long et multi-codécideurs.</p>
+          <ul>
+            <li>CRM aligné cycle d'achat hôtelier (Procurement + F&amp;B + CSO).</li>
+            <li>Site restructuré en showrooms par persona.</li>
+            <li>Qualification, scoring et nurturing automatisés.</li>
+            <li>Battlecards live face à Nordaq / Castalie.</li>
+          </ul>
+        </div>
+        <div class="pillar">
+          <div class="pillar-head">
+            <span class="pillar-num">P / 02</span>
+            <span class="pillar-marker"></span>
+          </div>
+          <h4>Marketing</h4>
+          <p class="tagline">Tenir une cadence éditoriale Accor sans dupliquer les budgets de prod.</p>
+          <ul>
+            <li>Génération image &amp; vidéo par propriété.</li>
+            <li>Localisation FR · EN · AR · ZH sans surcoût.</li>
+            <li>Press kits et fiches produit à la demande.</li>
+            <li>Contenu cobrandé partenaire hôtelier.</li>
+          </ul>
+        </div>
+        <div class="pillar">
+          <div class="pillar-head">
+            <span class="pillar-num">P / 03</span>
+            <span class="pillar-marker"></span>
+          </div>
+          <h4>Training</h4>
+          <p class="tagline">Former en continu des équipes terrain rotatives, multi-pays, multi-langues.</p>
+          <ul>
+            <li>Compagnon WhatsApp dans la poche du staff.</li>
+            <li>Onboarding scalable, certification automatique.</li>
+            <li>Réponses AQTiV instantanées, en langue locale.</li>
+            <li>Remontée passive des questions terrain au siège.</li>
+          </ul>
+        </div>
+        <div class="pillar">
+          <div class="pillar-head">
+            <span class="pillar-num">P / 04</span>
+            <span class="pillar-marker"></span>
+          </div>
+          <h4>Sustainability</h4>
+          <p class="tagline">Faire du sujet RSE une arme commerciale active, pas un livrable annuel.</p>
+          <ul>
+            <li>Console d'Impact temps réel (CO₂, plastique évité).</li>
+            <li>Alignement automatique CSRD · AGEC · GSTC.</li>
+            <li>Reporting one-click pour le RSE du client.</li>
+            <li>Documentation achats responsables auditable.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 03 — MÉCANISME -->
+  <section id="mecanisme">
+    <div class="section-head reveal">
+      <div class="num">03<em>.</em></div>
+      <div>
+        <span class="eyebrow muted label"><span class="dot"></span>Mécanisme · Vision Macro</span>
+        <h2 class="title">Trois <em>cas concrets</em>, prêts à explorer.</h2>
+      </div>
+      <div class="meta">Section 03 de 03 — chacun avec un analogue Orchestra déjà opéré ailleurs.</div>
+    </div>
+
+    <p class="cases-intro reveal">
+      Parmi les piliers, trois cas semblent particulièrement <em>actionnables</em> à 6 mois pour BE WTR — chacun adresse un point de friction documenté du moment Accor, et chacun bénéficie d'un analogue déjà opéré par Orchestra.
+    </p>
+
+    <div class="case reveal">
+      <div class="case-head">
+        <div class="case-num">i.</div>
+        <span class="lab">Cas · 01</span>
+        <h3>Compagnon <em>Sommelier.</em></h3>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Training</span>
+          <span class="pillar-tag">Sales</span>
+        </div>
+      </div>
+      <div class="case-body">
+        <p class="lead">
+          Un agent WhatsApp dans la poche de chaque directeur F&amp;B et sommelier — sur place, en langue locale, <em>sans formation préalable.</em>
+        </p>
+        <ul>
+          <li>Réponses instantanées sur la technologie AQTiV — vortex, mouthfeel, accords mets-vins.</li>
+          <li>Génération à la demande de fiches produits, scripts de service et supports staff.</li>
+          <li>Onboarding de chaque nouveau collaborateur sans monopoliser le calendrier siège.</li>
+          <li>Remontée passive et structurée des questions terrain — signal continu pour le siège BE WTR sur ce qui bloque dans chaque propriété.</li>
+        </ul>
+        <div class="note">
+          <span class="lab">Analogue Orchestra</span>
+          <strong>Micheline</strong> — l'agent conversationnel déployé en salon de coiffure. Même logique de B2B distribué, équipes terrain à former en continu, multi-points de service. La mécanique est directement transférable.
+        </div>
+      </div>
+    </div>
+
+    <div class="case reveal">
+      <div class="case-head">
+        <div class="case-num">ii.</div>
+        <span class="lab">Cas · 02</span>
+        <h3>Console d'<em>Impact ESG.</em></h3>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Sustainability</span>
+          <span class="pillar-tag">Sales</span>
+        </div>
+      </div>
+      <div class="case-body">
+        <p class="lead">
+          Faire du reporting ESG une <em>arme commerciale active</em>. Pas un rapport annuel — un tableau de bord temps réel, exportable d'un clic dans le RSE du client.
+        </p>
+        <ul>
+          <li>Comptage temps réel — bouteilles plastique évitées, tonnes CO₂ économisées, équivalences pédagogiques (vols Paris–NY).</li>
+          <li>Données par propriété, certifiées et auditables — alignement GSTC, CSRD, AGEC.</li>
+          <li>Export d'un rapport prêt à intégrer dans le rapport RSE annuel de l'hôtel client — en un clic.</li>
+          <li>Documentation achats responsables exploitable en appel d'offres B2B.</li>
+        </ul>
+        <div class="note">
+          <span class="lab">Ce que ça déplace</span>
+          Si BE WTR devient <strong>indispensable</strong> au reporting RSE de ses clients, le statut de fournisseur change de nature&nbsp;: vous n'êtes plus une ligne dans le P&amp;L hospitality, vous êtes un input du leur.
+        </div>
+      </div>
+    </div>
+
+    <div class="case reveal">
+      <div class="case-head">
+        <div class="case-num">iii.</div>
+        <span class="lab">Cas · 03</span>
+        <h3>BE WTR <em>Studio.</em></h3>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Marketing</span>
+        </div>
+      </div>
+      <div class="case-body">
+        <p class="lead">
+          L'équipe créative BE WTR <em>amplifiée</em> — pas remplacée. Analyse, création et distribution coordonnées, déclinées par propriété, persona et langue.
+        </p>
+        <ul>
+          <li>Génération photo · vidéo · social déclinée par site, persona et langue.</li>
+          <li>Press kits et fiches produit générés à la demande pour chaque ouverture (Rosewood, Ritz-Carlton, W, Mina Seyahi).</li>
+          <li>Localisation du récit AQTiV en FR · EN · AR · ZH sans dupliquer les budgets de production.</li>
+          <li>Co-création avec les chefs étoilés partenaires (Paul Marcon, Bocuse d'Or, Gault&amp;Millau) à la cadence Accor.</li>
+          <li>Connecteurs ouverts — votre studio, vos prestataires et vos agences peuvent s'y greffer sans rupture.</li>
+        </ul>
+        <div class="note">
+          <span class="lab">Analogue Orchestra</span>
+          Système actuellement déployé pour un <strong>groupe BTP</strong> — coordination analyse · production · distribution sociale multi-marques. Secteur différent, mécanique directement transférable au Studio BE WTR.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="closing">
+    <div class="water-mark reveal"></div>
+    <span class="eyebrow water reveal"><span class="dot"></span>Prochaine étape</span>
+    <h2 class="reveal">Une <em>conversation,</em><br>pas un pitch.</h2>
+    <p class="reveal">
+      Ce document est un point de départ — pas une recommandation finalisée. Si l'un des trois cas résonne avec vos priorités actuelles, on va <em>plus loin</em> ensemble. Sinon, vous saurez précisément qui nous sommes et comment nous opérons.
+    </p>
+    <p class="sub-note reveal">
+      Format suggéré&nbsp;: un échange d'une heure avec les équipes BE WTR concernées<br>(CMO, opérations, déploiement Accor — selon les angles retenus).
+    </p>
+
+    <a href="#" class="closing-cta reveal">
+      Ouvrir la conversation
+      <span class="arrow">→</span>
+    </a>
+
+    <div class="closing-meta">
+      <span class="lab">Orchestra Intelligence · Mai 2026</span>
+      <span class="center mono">ORC—BWTR—2026.05</span>
+      <span class="lab end">Document de travail — diffusion restreinte</span>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // Smooth nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav a');
+  const navObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.nav a[data-link="${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => navObserver.observe(s));
+
+  // Reveal on scroll
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>
