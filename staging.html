@@ -111,6 +111,40 @@
     z-index: -1;
   }
 
+  /* Cream section (Moment) — subtle off-white full-bleed background */
+  .section-cream { position: relative; z-index: 0; }
+  .section-cream::before {
+    content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 100vw; height: 100%; background: var(--bg-3);
+    z-index: -1;
+  }
+
+  /* Dark section (Cadence) — full-bleed black for the ENTIRE section, not just inner block */
+  .section-dark { position: relative; z-index: 0; color: var(--bg); }
+  .section-dark::before {
+    content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 100vw; height: 100%; background: var(--ink);
+    z-index: -1;
+  }
+  .section-dark .section-head { border-bottom-color: rgba(255,255,255,0.15); }
+  .section-dark .section-head .num,
+  .section-dark .section-head .title { color: var(--bg); }
+  .section-dark .section-head .num .dot { color: var(--orange); }
+  .section-dark .section-head .title .accent { color: var(--orange); }
+  .section-dark .section-head .eyebrow.muted,
+  .section-dark .section-head .meta { color: rgba(255,255,255,0.55); }
+  /* Cadence inner block — inherit dark from parent section, no need for its own dark layer */
+  .section-dark .cadence-block { margin-top: 40px; padding: 0; border-top: none; }
+  .section-dark .cadence-head h3 { color: var(--bg); }
+  .section-dark .cadence-head h3 .accent { color: var(--orange); }
+  .section-dark .cadence-head .meta { color: rgba(255,255,255,0.55); }
+  .section-dark .marquee {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .section-dark .marquee-item { color: rgba(255,255,255,0.78); border-right-color: rgba(255,255,255,0.08); }
+  .section-dark .marquee-item.accent { color: var(--orange); }
+
   /* Case body */
   .case-body { margin: 0 0 60px; border-top: 1px solid var(--line); }
   .case-row {
@@ -230,7 +264,7 @@
     </div>
   </header>
 
-  <section id="moment">
+  <section id="moment" class="section-cream">
     <div class="section-head reveal">
       <div class="num">01<span class="dot">.</span></div>
       <div>
@@ -278,7 +312,7 @@
     </div>
   </section>
 
-  <section id="cadence">
+  <section id="cadence" class="section-dark">
     <div class="section-head reveal">
       <div class="num">02<span class="dot">.</span></div>
       <div>
@@ -288,7 +322,7 @@
       <div class="meta">Section 02 / 04 — live monitored, weekly updated.</div>
     </div>
 
-    <div class="cadence-block dark-block">
+    <div class="cadence-block">
       <div class="cadence-head reveal">
         <h3>AI MOVES <span class="accent">TOO FAST.</span> NO ONE INTERNAL CAN KEEP UP.</h3>
         <div class="meta">Models, tools and frameworks shipped since January 2025 — non-exhaustive.</div>
