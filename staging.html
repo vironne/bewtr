@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orchestra × BE WTR — Staging</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .hero-visual {
+    background: #111 url("bewtr-hero-cropped.png") center 30% / cover no-repeat !important;
+  }
+  .hero-visual::before, .hero-visual .bottle, .hero-visual .glass { display: none !important; }
+  .hero-visual .ph-tag { background: rgba(255,255,255,0.92); color: #000; }
+
+  .hero-title--soft {
+    font-weight: 400 !important;
+    text-transform: none !important;
+    font-size: clamp(1.8rem, 3.2vw, 3rem) !important;
+    line-height: 1.18 !important;
+    letter-spacing: -0.015em !important;
+    max-width: 920px;
+    color: var(--ink-soft) !important;
+  }
+  .hero-title--soft .accent {
+    font-weight: 600 !important;
+    color: var(--orange) !important;
+  }
+
+  /* === STAGING-ONLY ADDITIONS === */
+  /* Open question (end of Moment) */
+  .open-question { margin-top: 110px; padding-top: 60px; border-top: 1px solid var(--line); }
+  .open-question .eyebrow { display: inline-block; margin-bottom: 24px; }
+  .open-question h3 {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 300;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin-bottom: 22px;
+    color: var(--ink);
+    max-width: 920px;
+  }
+  .open-question h3 .accent { color: var(--orange); font-weight: 500; }
+  .open-question > p {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 40px;
+    max-width: 680px;
+  }
+  .open-question ul {
+    list-style: none;
+    border-top: 1px solid var(--line);
+    margin: 0;
+    padding: 0;
+  }
+  .open-question ul li {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 28px;
+    align-items: baseline;
+    font-size: 1.1rem;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  .open-question .q-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--orange);
+    font-weight: 700;
+  }
+
+  /* Why Orchestra transition */
+  .why-orchestra {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+    color: var(--ink-soft);
+    margin: 0 0 90px;
+    max-width: 980px;
+  }
+  .why-orchestra .accent { color: var(--orange); font-weight: 600; }
+
+  /* Case body */
+  .case-body { margin: 0 0 60px; border-top: 1px solid var(--line); }
+  .case-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 60px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .case-row .case-lab {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    font-weight: 700;
+  }
+  .case-row p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 760px;
+    margin: 0;
+  }
+
+  /* Case closer */
+  .case-closer {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.005em;
+    line-height: 1.3;
+    text-align: center;
+    max-width: 900px;
+    margin: 80px auto 0;
+    color: var(--ink);
+  }
+  .case-closer .accent { color: var(--orange); }
+
+  /* Staging banner */
+  .staging-banner {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--orange);
+    color: #fff;
+    padding: 8px 56px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+  }
+  body.has-staging-banner { padding-top: 32px; }
+  .has-staging-banner .nav { top: 32px; }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .open-question ul li { grid-template-columns: 40px 1fr; gap: 16px; }
+    .case-row { grid-template-columns: 1fr; gap: 16px; }
+  }
+</style>
+</head>
+<body class="has-staging-banner">
+
+<div class="staging-banner">STAGING PREVIEW · NOT THE LIVE VERSION · MAY 12, 2026</div>
+
+<nav class="nav">
+  <div class="brand">
+    <span class="ork">ORCHESTRA</span>
+    <span class="x">×</span>
+    <span class="bw">BE WTR</span>
+  </div>
+  <ul>
+    <li><a href="#moment" data-link="moment">The Moment</a></li>
+    <li><a href="#cadence" data-link="cadence">The Cadence</a></li>
+    <li><a href="#case" data-link="case">The Case</a></li>
+  </ul>
+  <span></span>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-top">
+      <span class="crumb"><b>WORKING DOCUMENT</b> · CONFIDENTIAL</span>
+      <span></span>
+      <span class="live"><span class="pulse"></span>MAY 2026 EDITION</span>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow" style="margin-bottom: 28px; display: inline-block;">A NOTE FROM ORCHESTRA INTELLIGENCE</span>
+        <h1 class="hero-title hero-title--soft">
+          We're Orchestra Intelligence — and we'd like to introduce ourselves to <span class="accent">BE WTR</span>. A few thoughts on where we think we could help, gathered in one place.
+        </h1>
+      </div>
+    </div>
+
+    <div class="hero-bottom">
+      <p class="lead">
+        Our read of the BE WTR moment, a few open questions, and one case. Conversation, not pitch.
+      </p>
+      <div class="cell">
+        <span class="lab">Prepared by</span>
+        <span class="val">Orchestra Intelligence</span>
+      </div>
+      <div class="cell">
+        <span class="lab">For</span>
+        <span class="val">BE WTR Leadership</span>
+      </div>
+      <div class="cell">
+        <span class="lab">Reference</span>
+        <span class="val">ORC—BWTR—2026.05</span>
+      </div>
+    </div>
+  </header>
+
+  <section id="moment">
+    <div class="section-head reveal">
+      <div class="num">01<span class="dot">.</span></div>
+      <div>
+        <span class="eyebrow muted label">SITUATION &amp; OPPORTUNITY</span>
+        <h2 class="title">THE <span class="accent">MOMENT.</span></h2>
+      </div>
+      <div class="meta">Section 01 / 04 — published figures, open sources.</div>
+    </div>
+
+    <p class="moment-intro reveal">
+      Here's what we read: BE WTR is no longer fighting for demand. The next chapter is <span class="accent">scale</span> — and keeping pace with how fast AI is rewriting what "industrializing a premium standard" actually means.
+    </p>
+
+    <div class="stats-grid reveal">
+      <div class="stat">
+        <div class="head"><span class="lab">SERIES C</span><span class="ix">A · 01</span></div>
+        <div class="num">39<sup>M CHF</sup></div>
+        <div class="desc">Oct. 2024 — Convent, PeakBridge, Edmond de Rothschild.</div>
+      </div>
+      <div class="stat">
+        <div class="head"><span class="lab">BOTTLING</span><span class="ix">B · 02</span></div>
+        <div class="num">20<sup>+ SITES</sup></div>
+        <div class="desc">Network targeted by end of 2025.</div>
+      </div>
+      <div class="stat">
+        <div class="head"><span class="lab">GEOGRAPHIES</span><span class="ix">C · 03</span></div>
+        <div class="num">8<sup>COUNTRIES</sup></div>
+        <div class="desc">Active. APAC + North America next.</div>
+      </div>
+      <div class="stat">
+        <div class="head"><span class="lab">MARKET 2031</span><span class="ix">D · 04</span></div>
+        <div class="num">49<sup>BN $</sup></div>
+        <div class="desc">Global premium water — CAGR +8.23%.</div>
+      </div>
+    </div>
+
+    <div class="moment-pull reveal">
+      <div class="glyph-l">“</div>
+      <p>THE MARKET PULLS. <span class="accent">EXECUTION</span> NOW SETS THE PACE.</p>
+      <div class="glyph-r">“</div>
+    </div>
+
+    <div class="open-question reveal">
+      <span class="eyebrow muted label">OVER TO YOU</span>
+      <h3>Numbers tell one story. <span class="accent">Your read tells another.</span></h3>
+      <p>We've put our reading on this page. What we'd really like is to hear yours.</p>
+      <ul>
+        <li><span class="q-num">01</span> What's the real ambition for BE WTR over the next 18 months — the one not in the press releases?</li>
+        <li><span class="q-num">02</span> Where does execution actually hurt today — the friction we can't see from the outside?</li>
+        <li><span class="q-num">03</span> What's the one thing you'd want someone to take off your plate, starting tomorrow?</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="cadence">
+    <div class="section-head reveal">
+      <div class="num">02<span class="dot">.</span></div>
+      <div>
+        <span class="eyebrow muted label">CONTEXT &amp; PACE</span>
+        <h2 class="title">THE <span class="accent">CADENCE.</span></h2>
+      </div>
+      <div class="meta">Section 02 / 04 — live monitored, weekly updated.</div>
+    </div>
+
+    <div class="cadence-block dark-block">
+      <div class="cadence-head reveal">
+        <h3>AI MOVES <span class="accent">TOO FAST.</span> NO ONE INTERNAL CAN KEEP UP.</h3>
+        <div class="meta">Models, tools and frameworks shipped since January 2025 — non-exhaustive.</div>
+      </div>
+
+      <div class="marquee">
+        <div class="marquee-track">
+          <span class="marquee-item">Claude 4.7</span><span class="marquee-item">GPT-5</span><span class="marquee-item accent">Gemini 3</span><span class="marquee-item">Llama 4</span><span class="marquee-item">Mistral Large 2</span><span class="marquee-item">DeepSeek R1</span><span class="marquee-item accent">Qwen 3</span><span class="marquee-item">Pixtral</span><span class="marquee-item">Nemotron 70B</span><span class="marquee-item">Phi-4</span><span class="marquee-item accent">Grok 4</span><span class="marquee-item">Command R+</span><span class="marquee-item">o3</span><span class="marquee-item">Sora</span><span class="marquee-item accent">Runway Gen-3</span><span class="marquee-item">Veo 3</span><span class="marquee-item">Kling 2</span><span class="marquee-item">Pika 2</span><span class="marquee-item">Hailuo</span><span class="marquee-item accent">Midjourney v7</span><span class="marquee-item">Flux.1 Pro</span><span class="marquee-item">Ideogram 3</span><span class="marquee-item">Recraft V3</span><span class="marquee-item">Suno v4</span><span class="marquee-item accent">ElevenLabs v3</span><span class="marquee-item">Claude 4.7</span><span class="marquee-item">GPT-5</span><span class="marquee-item accent">Gemini 3</span><span class="marquee-item">Llama 4</span><span class="marquee-item">Mistral Large 2</span><span class="marquee-item">DeepSeek R1</span><span class="marquee-item accent">Qwen 3</span><span class="marquee-item">Pixtral</span><span class="marquee-item">Nemotron 70B</span><span class="marquee-item">Phi-4</span><span class="marquee-item accent">Grok 4</span><span class="marquee-item">Command R+</span><span class="marquee-item">o3</span><span class="marquee-item">Sora</span><span class="marquee-item accent">Runway Gen-3</span><span class="marquee-item">Veo 3</span><span class="marquee-item">Kling 2</span><span class="marquee-item">Pika 2</span><span class="marquee-item">Hailuo</span><span class="marquee-item accent">Midjourney v7</span><span class="marquee-item">Flux.1 Pro</span><span class="marquee-item">Ideogram 3</span><span class="marquee-item">Recraft V3</span><span class="marquee-item">Suno v4</span><span class="marquee-item accent">ElevenLabs v3</span>
+        </div>
+      </div>
+
+      <div class="marquee">
+        <div class="marquee-track reverse">
+          <span class="marquee-item">Cursor</span><span class="marquee-item accent">Windsurf</span><span class="marquee-item">Devin</span><span class="marquee-item">v0</span><span class="marquee-item">bolt.new</span><span class="marquee-item accent">Lovable</span><span class="marquee-item">Replit Agent</span><span class="marquee-item">Claude Code</span><span class="marquee-item">LangGraph</span><span class="marquee-item accent">CrewAI</span><span class="marquee-item">AutoGen</span><span class="marquee-item">Mastra</span><span class="marquee-item">Letta</span><span class="marquee-item accent">Pinecone</span><span class="marquee-item">Weaviate</span><span class="marquee-item">Qdrant</span><span class="marquee-item">Perplexity Pro</span><span class="marquee-item accent">Glean</span><span class="marquee-item">Notion AI</span><span class="marquee-item">Granola</span><span class="marquee-item">Modal</span><span class="marquee-item accent">MCP</span><span class="marquee-item">Realtime API</span><span class="marquee-item">Cartesia</span><span class="marquee-item">Vapi</span><span class="marquee-item">Cursor</span><span class="marquee-item accent">Windsurf</span><span class="marquee-item">Devin</span><span class="marquee-item">v0</span><span class="marquee-item">bolt.new</span><span class="marquee-item accent">Lovable</span><span class="marquee-item">Replit Agent</span><span class="marquee-item">Claude Code</span><span class="marquee-item">LangGraph</span><span class="marquee-item accent">CrewAI</span><span class="marquee-item">AutoGen</span><span class="marquee-item">Mastra</span><span class="marquee-item">Letta</span><span class="marquee-item accent">Pinecone</span><span class="marquee-item">Weaviate</span><span class="marquee-item">Qdrant</span><span class="marquee-item">Perplexity Pro</span><span class="marquee-item accent">Glean</span><span class="marquee-item">Notion AI</span><span class="marquee-item">Granola</span><span class="marquee-item">Modal</span><span class="marquee-item accent">MCP</span><span class="marquee-item">Realtime API</span><span class="marquee-item">Cartesia</span><span class="marquee-item">Vapi</span>
+        </div>
+      </div>
+
+      <div class="cadence-bottom reveal">
+        <div class="cadence-bottom-left">
+          <div class="cadence-curve">
+            <div class="curve-head">
+              <span class="lab">CAPABILITY HORIZON</span>
+              <span class="meta">METR · LLM time horizon, 80% success</span>
+            </div>
+            <svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-label="METR LLM Time Horizon chart">
+              <text x="430" y="22" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-size="13" font-family="Inter Tight, sans-serif" font-weight="500">LLM Time Horizon, METR Software Tasks</text>
+              <text x="430" y="40" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="11" font-family="Inter Tight, sans-serif">80% success — with GPT-5.5 Pro Extended estimate</text>
+              <rect x="100" y="65" width="660" height="375" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+              <g stroke="rgba(255,255,255,0.07)" stroke-dasharray="2,3" stroke-width="1">
+                <line x1="100" y1="92" x2="760" y2="92"/>
+                <line x1="100" y1="142" x2="760" y2="142"/>
+                <line x1="100" y1="192" x2="760" y2="192"/>
+                <line x1="100" y1="242" x2="760" y2="242"/>
+                <line x1="100" y1="292" x2="760" y2="292"/>
+                <line x1="100" y1="342" x2="760" y2="342"/>
+              </g>
+              <g fill="rgba(255,255,255,0.55)" font-size="10" font-family="Inter Tight, sans-serif" text-anchor="end">
+                <text x="92" y="96">3 hours</text>
+                <text x="92" y="146">2.5 h</text>
+                <text x="92" y="196">2 hours</text>
+                <text x="92" y="246">1.5 h</text>
+                <text x="92" y="296">1 hour</text>
+                <text x="92" y="346">30 min</text>
+                <text x="92" y="443">0</text>
+              </g>
+              <text transform="translate(35,250) rotate(-90)" fill="rgba(255,255,255,0.5)" font-size="10" font-family="Inter Tight, sans-serif" text-anchor="middle">Human task duration at 80% model success</text>
+              <g fill="rgba(255,255,255,0.55)" font-size="11" font-family="Inter Tight, sans-serif" text-anchor="middle">
+                <text x="175" y="462">2020</text>
+                <text x="335" y="462">2022</text>
+                <text x="495" y="462">2024</text>
+                <text x="615" y="462">2025</text>
+                <text x="715" y="462">2026</text>
+              </g>
+              <text x="430" y="486" fill="rgba(255,255,255,0.5)" font-size="11" font-family="Inter Tight, sans-serif" text-anchor="middle">Release year</text>
+              <path d="M 480 438 C 530 438, 565 432, 590 415 C 615 395, 635 360, 660 305 C 685 245, 705 195, 720 150 C 730 130, 740 110, 745 95" stroke="#5B9BD5" stroke-width="1.5" fill="none" stroke-dasharray="6,4" opacity="0.75"/>
+              <g fill="#5B9BD5">
+                <circle cx="115" cy="440" r="3"/>
+                <circle cx="175" cy="440" r="3"/>
+                <circle cx="335" cy="440" r="3"/>
+                <circle cx="445" cy="438" r="3"/>
+                <circle cx="470" cy="437" r="3"/>
+                <circle cx="485" cy="436" r="3"/>
+                <circle cx="498" cy="434" r="3"/>
+                <circle cx="512" cy="432" r="3"/>
+                <circle cx="528" cy="429" r="3"/>
+                <circle cx="542" cy="425" r="3"/>
+                <circle cx="558" cy="420" r="3"/>
+                <circle cx="572" cy="414" r="3"/>
+                <circle cx="586" cy="408" r="3"/>
+                <circle cx="598" cy="400" r="3"/>
+                <circle cx="608" cy="390" r="3"/>
+                <circle cx="618" cy="380" r="3"/>
+                <circle cx="628" cy="368" r="3"/>
+                <circle cx="640" cy="352" r="3"/>
+                <circle cx="652" cy="332" r="3"/>
+                <circle cx="664" cy="316" r="3"/>
+                <circle cx="675" cy="305" r="3"/>
+                <circle cx="685" cy="290" r="3"/>
+                <circle cx="695" cy="260" r="3"/>
+                <circle cx="705" cy="220" r="3"/>
+                <circle cx="755" cy="80" r="3"/>
+              </g>
+              <line x1="720" y1="122" x2="720" y2="204" stroke="#E97825" stroke-width="1.5"/>
+              <line x1="713" y1="122" x2="727" y2="122" stroke="#E97825" stroke-width="1.5"/>
+              <line x1="713" y1="204" x2="727" y2="204" stroke="#E97825" stroke-width="1.5"/>
+              <text x="720" y="172" fill="#E97825" font-size="22" font-weight="bold" text-anchor="middle">★</text>
+              <g fill="rgba(255,255,255,0.78)" font-size="9.5" font-family="Inter Tight, sans-serif" text-anchor="end">
+                <text x="755" y="78">Claude Mythos Preview</text>
+                <text x="693" y="223">Gemini 3.1 Pro</text>
+                <text x="685" y="263">Claude Opus 4.6</text>
+                <text x="678" y="295">GPT-5.2 high</text>
+                <text x="670" y="310">GPT-5.4 xhigh</text>
+                <text x="660" y="325">GPT-5</text>
+              </g>
+              <text x="603" y="155" fill="rgba(255,255,255,0.78)" font-size="9.5" font-family="Inter Tight, sans-serif" text-anchor="end">GPT-5.5 Pro Extended</text>
+              <text x="603" y="168" fill="rgba(255,255,255,0.78)" font-size="9.5" font-family="Inter Tight, sans-serif" text-anchor="end">~2h20m estimate</text>
+              <line x1="606" y1="163" x2="713" y2="172" stroke="rgba(255,255,255,0.45)" stroke-width="0.8"/>
+              <rect x="115" y="80" width="190" height="68" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+              <circle cx="132" cy="100" r="3" fill="#5B9BD5"/>
+              <text x="146" y="104" fill="rgba(255,255,255,0.85)" font-size="10" font-family="Inter Tight, sans-serif">METR 80% time horizon</text>
+              <line x1="124" y1="120" x2="140" y2="120" stroke="#5B9BD5" stroke-width="1.5" stroke-dasharray="3,2"/>
+              <text x="146" y="124" fill="rgba(255,255,255,0.85)" font-size="10" font-family="Inter Tight, sans-serif">Exponential guide fit</text>
+              <text x="132" y="142" fill="#E97825" font-size="13" font-weight="bold" text-anchor="middle">★</text>
+              <text x="146" y="142" fill="rgba(255,255,255,0.85)" font-size="10" font-family="Inter Tight, sans-serif">GPT-5.5 Pro Extended estimate</text>
+            </svg>
+            <p class="curve-caption">From near-zero in 2022 to <span class="accent">2+ hours of autonomous work</span> by mid-2026. The curve isn't slowing — the next steps are already plotted.</p>
+          </div>
+        </div>
+        <div class="cadence-bottom-right">
+          <div class="just-in">
+            <div class="just-in-head">
+              <span class="pulse"></span>
+              <span class="lab">JUST IN — MAY 2026</span>
+            </div>
+            <ul>
+              <li><b>GPT-5.5 Pro Extended</b><span>OpenAI · this week</span></li>
+              <li><b>Gemini 3.1 Pro</b><span>Google · last week</span></li>
+              <li><b>Claude Opus 4.6</b><span>Anthropic · this month</span></li>
+            </ul>
+            <p class="hint">Our agents already test what's worth keeping. <span class="accent">Most firms haven't noticed yet.</span></p>
+          </div>
+          <div class="impact-summary">
+            <span class="lab">PLUS ROUGHLY</span>
+            <div class="big">~80<sup>/WK</sup></div>
+            <p>New releases every week. Selecting what serves the business is a job in itself. <span class="accent">Waiting isn't neutral</span> — competitors and adjacent players are already embracing it. Everyone will, eventually. The lead goes to whoever moves first.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="case">
+    <div class="section-head reveal">
+      <div class="num">03<span class="dot">.</span></div>
+      <div>
+        <span class="eyebrow muted label">HOW IT LOOKS IN PRACTICE</span>
+        <h2 class="title">WELLA <span class="accent">STUDIO.</span></h2>
+      </div>
+      <div class="meta">Section 03 / 04 — one case, briefly.</div>
+    </div>
+
+    <p class="why-orchestra reveal">
+      We built Orchestra to operate inside this cadence — agile by design, tool-native, biased to ship what works as fast as it stops working. <span class="accent">Here's one example.</span>
+    </p>
+
+    <div class="case-body reveal">
+      <div class="case-row">
+        <span class="case-lab">CONTEXT</span>
+        <div class="case-text">
+          <p>Wella's marketing team runs its own content studio in-house — creative direction, brand standards, taste. What it didn't have was capacity to feed every market, every channel, every launch at the pace the business asks of it.</p>
+        </div>
+      </div>
+      <div class="case-row">
+        <span class="case-lab">WHAT ORCHESTRA DID</span>
+        <div class="case-text">
+          <p>We plugged in next to the team. Same creative direction. Same brand standards. The studio kept its decision-making — we operated the execution layer underneath: image and video variants per market, multilingual localization, on-demand press kits and product sheets, co-branded assets for distributor partners.</p>
+        </div>
+      </div>
+      <div class="case-row">
+        <span class="case-lab">WHAT CHANGED</span>
+        <div class="case-text">
+          <p>The creative directors got their week back. The studio kept its identity. Output capacity multiplied without doubling the budget.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-grid reveal">
+      <div class="stat">
+        <div class="head"><span class="lab">CONTENT VARIANTS</span><span class="ix">A · 01</span></div>
+        <div class="num">12<sup>X / LAUNCH</sup></div>
+        <div class="desc">Versus baseline production output.</div>
+      </div>
+      <div class="stat">
+        <div class="head"><span class="lab">LANGUAGES</span><span class="ix">B · 02</span></div>
+        <div class="num">5<sup>DAY 1</sup></div>
+        <div class="desc">Localized at launch, not Week 4.</div>
+      </div>
+      <div class="stat">
+        <div class="head"><span class="lab">TIME-TO-PUB</span><span class="ix">C · 03</span></div>
+        <div class="num">-60<sup>%</sup></div>
+        <div class="desc">On product sheets and press kits.</div>
+      </div>
+      <div class="stat">
+        <div class="head"><span class="lab">AGENCIES REPLACED</span><span class="ix">D · 04</span></div>
+        <div class="num">0</div>
+        <div class="desc">Execution added — creative direction kept.</div>
+      </div>
+    </div>
+
+    <p class="case-closer reveal">
+      <span class="accent">Wella kept what makes Wella, Wella.</span><br>We carried the rest.
+    </p>
+  </section>
+
+  <section class="closing" id="closing">
+    <div class="water-mark reveal"><span class="ork">ORCHESTRA</span><span class="x">×</span>BE WTR</div>
+    <span class="eyebrow reveal">SECTION 04 / 04 · NEXT STEP</span>
+    <h2 class="reveal">A <span class="accent">CONVERSATION,</span><br>NOT A PITCH.</h2>
+    <p class="reveal">
+      This is a starting point — not a finished recommendation. If the read on the moment, the cadence or the case opens a door, we go <span class="accent">deeper</span> together. Otherwise, you'll know exactly who we are and how we operate.
+    </p>
+    <p class="sub-note reveal">
+      Suggested format: a one-hour exchange with the relevant BE WTR teams.
+    </p>
+
+    <div class="closing-meta">
+      <span class="lab">ORCHESTRA INTELLIGENCE · MAY 2026</span>
+      <span class="center lab">ORC—BWTR—2026.05</span>
+      <span class="lab end">RESTRICTED DISTRIBUTION</span>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav a[data-link]');
+  const navObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.nav a[data-link="${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => navObserver.observe(s));
+
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>
