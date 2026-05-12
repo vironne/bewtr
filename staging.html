@@ -76,18 +76,40 @@
     font-weight: 700;
   }
 
-  /* Why Orchestra transition */
-  .why-orchestra {
-    font-family: 'Inter Tight', sans-serif;
-    font-size: clamp(1.2rem, 2vw, 1.6rem);
-    font-weight: 400;
-    line-height: 1.4;
-    letter-spacing: -0.005em;
-    color: var(--ink-soft);
-    margin: 0 0 90px;
-    max-width: 980px;
+  /* Why Orchestra Exists — bridge block opening the Case section */
+  .why-orchestra-block {
+    margin: 0 0 80px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid var(--line);
+    max-width: 1100px;
   }
-  .why-orchestra .accent { color: var(--orange); font-weight: 600; }
+  .why-orchestra-block .eyebrow { display: inline-block; margin-bottom: 24px; }
+  .why-orchestra-title {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 300;
+    font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+    margin-bottom: 24px;
+    color: var(--ink);
+    max-width: 940px;
+  }
+  .why-orchestra-title .accent { color: var(--orange); font-weight: 500; }
+  .why-orchestra-block > p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 880px;
+    margin: 0;
+  }
+
+  /* Warm section (Wella Studio) — orange-pale full-bleed background */
+  .section-warm { position: relative; z-index: 0; }
+  .section-warm::before {
+    content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 100vw; height: 100%; background: var(--orange-pale);
+    z-index: -1;
+  }
 
   /* Case body */
   .case-body { margin: 0 0 60px; border-top: 1px solid var(--line); }
@@ -245,20 +267,13 @@
       </div>
     </div>
 
-    <div class="moment-pull reveal">
-      <div class="glyph-l">“</div>
-      <p>THE MARKET PULLS. <span class="accent">EXECUTION</span> NOW SETS THE PACE.</p>
-      <div class="glyph-r">“</div>
-    </div>
-
     <div class="open-question reveal">
       <span class="eyebrow muted label">OVER TO YOU</span>
-      <h3>Numbers tell one story. <span class="accent">Your read tells another.</span></h3>
-      <p>We've put our reading on this page. What we'd really like is to hear yours.</p>
+      <h3>We'd rather hear <span class="accent">your read.</span></h3>
       <ul>
-        <li><span class="q-num">01</span> What's the real ambition for BE WTR over the next 18 months — the one not in the press releases?</li>
-        <li><span class="q-num">02</span> Where does execution actually hurt today — the friction we can't see from the outside?</li>
-        <li><span class="q-num">03</span> What's the one thing you'd want someone to take off your plate, starting tomorrow?</li>
+        <li><span class="q-num">01</span> Real ambition for the next 18 months?</li>
+        <li><span class="q-num">02</span> Where does execution actually hurt today?</li>
+        <li><span class="q-num">03</span> What would you want operated for you tomorrow?</li>
       </ul>
     </div>
   </section>
@@ -405,7 +420,13 @@
     </div>
   </section>
 
-  <section id="case">
+  <section id="case" class="section-warm">
+    <div class="why-orchestra-block reveal">
+      <span class="eyebrow muted label">WHY ORCHESTRA EXISTS</span>
+      <h3 class="why-orchestra-title">Chasing the cadence isn't your job. <span class="accent">It's ours.</span></h3>
+      <p>One partner — not a consultancy that draws roadmaps, not a vendor that sells licenses. We don't replace your teams. We simplify, we activate, we operate. Agile by design, tool-native, biased to ship — inside the same cadence that just made staying still expensive.</p>
+    </div>
+
     <div class="section-head reveal">
       <div class="num">03<span class="dot">.</span></div>
       <div>
@@ -414,10 +435,6 @@
       </div>
       <div class="meta">Section 03 / 04 — one case, briefly.</div>
     </div>
-
-    <p class="why-orchestra reveal">
-      We built Orchestra to operate inside this cadence — agile by design, tool-native, biased to ship what works as fast as it stops working. <span class="accent">Here's one example.</span>
-    </p>
 
     <div class="case-body reveal">
       <div class="case-row">
